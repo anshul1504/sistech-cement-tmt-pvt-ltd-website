@@ -9,7 +9,7 @@ MENU_CACHE_KEY = "menu_items_all_v2"
 # Bump this whenever CSS/JS changes ship, so browsers can't serve a stale
 # cached header/footer from before the update (Django's dev server doesn't
 # set strong cache-busting headers on its own).
-STATIC_ASSET_VERSION = "20260928-13"
+STATIC_ASSET_VERSION = "20260928-14"
 
 
 def _load_menu_items():

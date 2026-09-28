@@ -62,23 +62,23 @@ HEADER_MENU = [
         ("Rewards & Recognition", "rewards_recognition", "Annual awards program.", "none"),
     ]),
     ("Responsibility", None, "none", [
-        ("Quality Assurance", "quality_assurance", "Our quality commitment.", "3"),
+        ("Quality Assurance", "quality_assurance", "Our quality commitment.", "none"),
         ("Safety & Sustainability", "safety_sustainability", "Building responsibly.", "none"),
         ("Corporate Responsibility (CSR)", "csr", "Our commitment beyond business.", "1"),
     ]),
     ("Media", None, "none", [
-        ("Gallery", "gallery", "Photos and videos.", "3"),
+        ("Gallery", "gallery", "Photos and videos.", "none"),
         ("Blog / News", "blog", "Latest updates from SISTECH.", "none"),
     ]),
-    ("Careers", "careers", "3", []),
-    ("Contact Us", "contact", "3", []),
+    ("Careers", "careers", "none", []),
+    ("Contact Us", "contact", "none", []),
 ]
 
 # Footer-only links (not in header nav): assigned straight to a footer column.
-# Privacy Policy & Terms lives only in the bottom legal bar (footer.html), not in
-# this column list too, to avoid showing the same link twice.
+# Privacy Policy & Terms lives only in the bottom legal bar (footer.html), and FAQ
+# is already in the top utility bar, so neither is repeated as a footer column link.
 FOOTER_ONLY_LINKS = [
-    ("FAQ", "faq", "3"),
+    ("FAQ", "faq", "none"),
     ("Privacy Policy & Terms", "privacy_terms", "none"),
 ]
 

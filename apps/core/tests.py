@@ -44,11 +44,12 @@ class MenuContextProcessorTests(SeedDataMixin, TestCase):
         self.assertLessEqual(len(ctx.captured_queries), 6, ctx.captured_queries)
 
     def test_footer_columns_populated(self):
+        # Column 3 is intentionally link-free: it holds only contact details
+        # (rendered directly from SiteSettings in footer.html), not MenuItems.
         request = RequestFactory().get("/")
         context = site_and_theme(request)
         self.assertTrue(context["footer_columns"]["1"])
         self.assertTrue(context["footer_columns"]["2"])
-        self.assertTrue(context["footer_columns"]["3"])
 
 
 class MenuIsActiveTagTests(SeedDataMixin, TestCase):

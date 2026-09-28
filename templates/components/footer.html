@@ -56,11 +56,6 @@
         {% if site.email_support %}<li class="footer__contact-line"><a href="mailto:{{ site.email_support }}">{% icon "mail" %}{{ site.email_support }} (Support)</a></li>{% endif %}
         {% if site.business_hours %}<li class="footer__contact-line">{% icon "clock" %}<span>{{ site.business_hours }}</span></li>{% endif %}
       </ul>
-      {% if footer_columns.3 %}
-      <ul class="footer__support-links">
-        {% for item in footer_columns.3 %}<li><a href="{{ item.get_url }}">{{ item.label }}</a></li>{% endfor %}
-      </ul>
-      {% endif %}
     </div>
     {% endif %}
   </div>

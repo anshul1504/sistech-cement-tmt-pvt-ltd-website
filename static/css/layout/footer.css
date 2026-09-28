@@ -9,6 +9,11 @@
 }
 body:not(.has-dark-footer) .site-footer { background: var(--color-alt-background); color: var(--color-text); }
 
+/* Footer is chrome, not body copy, so it gets a wider container than the
+   theme's reading-width content container — reads as genuinely full-width
+   on large screens instead of looking squeezed into a narrow column. */
+.site-footer .container { max-width: min(1680px, 96vw); }
+
 .site-footer::before {
   content: "";
   position: absolute;
@@ -82,9 +87,6 @@ body:not(.has-dark-footer) .footer__social a { background: rgba(20,51,127,0.08);
 .footer__contact-line a:hover { opacity: 1; }
 .footer__directions { display: inline-block; margin-top: 0.4rem; color: var(--color-accent); font-weight: 600; font-size: 0.85rem; opacity: 1; }
 .footer__directions:hover { text-decoration: underline; }
-
-.footer__support-links { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,0.15); display: grid; gap: 0.7rem; }
-body:not(.has-dark-footer) .footer__support-links { border-top-color: var(--color-border); }
 
 .footer__bottom {
   position: relative;

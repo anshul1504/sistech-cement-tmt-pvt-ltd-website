@@ -127,7 +127,7 @@ class SiteSettings(SingletonModel):
 
     footer_col1_title = models.CharField(max_length=50, blank=True, default="Company")
     footer_col2_title = models.CharField(max_length=50, blank=True, default="Products & Programs")
-    footer_col3_title = models.CharField(max_length=50, blank=True, default="Support")
+    footer_col3_title = models.CharField(max_length=50, blank=True, default="Contact")
     credit_text = models.CharField(max_length=100, blank=True, default="Designed & Developed by The Webfix")
     credit_url = models.URLField(blank=True, default="https://thewebfix.in")
 
