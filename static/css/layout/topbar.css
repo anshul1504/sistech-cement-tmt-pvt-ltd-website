@@ -1,0 +1,40 @@
+.top-bar {
+  background: var(--color-primary-dark);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.82rem;
+  height: var(--topbar-height, 40px);
+  overflow: hidden;
+  transition: height 0.25s ease, opacity 0.2s ease;
+}
+.site-header.is-scrolled .top-bar { height: 0; opacity: 0; }
+
+.top-bar__inner {
+  height: var(--topbar-height, 40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+.top-bar__contact { display: flex; gap: 1.5rem; align-items: center; min-width: 0; }
+.top-bar__contact a, .top-bar__hours {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  opacity: 0.92;
+}
+.top-bar__contact a:hover { opacity: 1; color: var(--color-accent); }
+.top-bar__contact .icon { color: var(--color-accent); }
+
+.top-bar__right { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+.top-bar__whatsapp { display: inline-flex; align-items: center; gap: 0.4rem; color: #25D366; font-weight: 600; white-space: nowrap; }
+.top-bar__social { display: flex; align-items: center; gap: 0.85rem; }
+.top-bar__social a { color: inherit; opacity: 0.85; display: inline-flex; }
+.top-bar__social a:hover { opacity: 1; color: var(--color-accent); }
+.top-bar__faq { color: inherit; opacity: 0.85; padding-left: 1rem; border-left: 1px solid rgba(255,255,255,0.25); white-space: nowrap; }
+.top-bar__faq:hover { opacity: 1; color: var(--color-accent); }
+
+@media (max-width: 1099.98px) {
+  .top-bar { display: none; }
+}

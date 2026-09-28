@@ -1,0 +1,2 @@
+.breadcrumb { display: flex; gap: 0.5rem; align-items: center; color: var(--color-muted); font-size: 0.9rem; padding-block: 1rem; }
+.breadcrumb a { color: var(--color-primary); }

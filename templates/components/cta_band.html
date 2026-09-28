@@ -1,0 +1,9 @@
+{% load core_extras %}
+{% if page.hero_cta_label or default_cta_label %}
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <h2>{{ cta_heading|default:"Ready to build with SISTECH?" }}</h2>
+    <a class="btn btn--accent btn--lg" href="{{ page.hero_cta_url|default:'/contact/' }}">{{ page.hero_cta_label|default:"Contact Us" }}</a>
+  </div>
+</section>
+{% endif %}

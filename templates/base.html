@@ -1,0 +1,61 @@
+{% load static core_extras %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.company_name }}{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}{{ site.tagline }}{% endblock %}">
+{% block canonical %}{% endblock %}
+{% if page.noindex %}<meta name="robots" content="noindex,nofollow">{% endif %}
+
+<meta property="og:title" content="{% block og_title %}{{ site.company_name }}{% endblock %}">
+<meta property="og:description" content="{% block og_description %}{{ site.tagline }}{% endblock %}">
+{% if site.default_share_image %}<meta property="og:image" content="{{ site.default_share_image.url }}">{% endif %}
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+{% if site.favicon %}<link rel="icon" href="{{ site.favicon.url }}">{% endif %}
+{% if site.apple_touch_icon %}<link rel="apple-touch-icon" href="{{ site.apple_touch_icon.url }}">{% endif %}
+
+{% if theme.heading_font != "system" or theme.body_font != "system" %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500;700&family=Inter:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+{% endif %}
+
+<style>
+{% include "components/theme_vars.css" %}
+</style>
+
+{% if use_built_css %}
+<link rel="stylesheet" href="{% static 'dist/main.css' %}?v={{ asset_v }}">
+{% else %}
+{% css_manifest as layers %}
+{% for layer in layers %}<link rel="stylesheet" href="{% static layer %}?v={{ asset_v }}">
+{% endfor %}
+{% endif %}
+
+{% block extra_head %}{% endblock %}
+{% if site.ga_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '{{ site.ga_id }}');</script>
+{% endif %}
+{% if site.head_scripts %}{{ site.head_scripts|safe }}{% endif %}
+</head>
+<body class="{% if theme.dark_footer %}has-dark-footer{% endif %}">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+{% include "components/icons.svg" %}
+{% include "components/header.html" %}
+
+<main id="main-content">
+{% block content %}{% endblock %}
+</main>
+
+{% include "components/footer.html" %}
+{% if theme.whatsapp_button_enabled and site.whatsapp_number %}{% include "components/whatsapp_button.html" %}{% endif %}
+{% if theme.back_to_top_enabled %}{% include "components/back_to_top.html" %}{% endif %}
+
+<script type="module" src="{% static 'js/main.js' %}?v={{ asset_v }}"></script>
+{% if site.footer_scripts %}{{ site.footer_scripts|safe }}{% endif %}
+</body>
+</html>

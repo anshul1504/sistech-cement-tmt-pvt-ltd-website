@@ -1,0 +1,12 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <div class="gallery-strip" data-component="lightbox">
+      {% for img in section.gallery_images.all %}
+      <a href="{{ img.image.url }}" class="gallery-strip__item">
+        <img src="{{ img.image.url }}" alt="{{ img.caption }}" loading="lazy">
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

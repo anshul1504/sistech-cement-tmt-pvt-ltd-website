@@ -1,0 +1,7 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }} align-{{ section.alignment }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    {% if section.subheading %}<p class="section__subheading">{{ section.subheading }}</p>{% endif %}
+    <div class="richtext">{{ section.richtext_body|safe }}</div>
+  </div>
+</section>

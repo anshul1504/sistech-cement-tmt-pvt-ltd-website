@@ -1,0 +1,9 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <div class="map-embed" data-component="map"
+         data-lat="{{ section.map_embed_lat|default:site.map_lat }}"
+         data-lng="{{ section.map_embed_lng|default:site.map_lng }}"
+         data-zoom="{{ section.map_embed_zoom }}"></div>
+  </div>
+</section>

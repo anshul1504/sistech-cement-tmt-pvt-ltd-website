@@ -1,0 +1,18 @@
+{% load core_extras %}:root {
+  --color-primary: {{ theme.color_primary }};
+  --color-primary-dark: {{ theme.color_primary_dark }};
+  --color-accent: {{ theme.color_accent }};
+  --color-text: {{ theme.color_text }};
+  --color-muted: {{ theme.color_muted }};
+  --color-background: {{ theme.color_background }};
+  --color-alt-background: {{ theme.color_alt_background }};
+  --color-border: {{ theme.color_border }};
+  --color-header-bg: {{ theme.color_header_bg }};
+  --color-footer-bg: {{ theme.color_footer_bg }};
+
+  --font-heading: {{ theme.heading_font|font_stack }};
+  --font-body: {{ theme.body_font|font_stack }};
+  --font-size-base: {{ theme.base_font_size }}px;
+  --radius: {{ theme.border_radius|radius_value }};
+  --container-width: {{ theme.container_width }}px;
+}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load core_extras %}
+
+{% block title %}{{ page.meta_title|default:site.company_name }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:site.tagline }}{% endblock %}
+
+{% block content %}
+{% if hero_slides %}
+<section class="hero-slider" data-component="hero-slider">
+  {% for slide in hero_slides %}
+  <div class="hero-slide {% if forloop.first %}is-active{% endif %}" {% if slide.image %}style="background-image:url('{{ slide.image.url }}');"{% endif %}>
+    <div class="hero-slide__overlay"></div>
+    <div class="container hero-slide__inner">
+      <h1>{{ slide.heading }}</h1>
+      {% if slide.subheading %}<p>{{ slide.subheading }}</p>{% endif %}
+      <div class="hero-slide__ctas">
+        {% if slide.cta_1_label %}<a class="btn btn--accent btn--lg" href="{{ slide.cta_1_url }}">{{ slide.cta_1_label }}</a>{% endif %}
+        {% if slide.cta_2_label %}<a class="btn btn--outline btn--lg" href="{{ slide.cta_2_url }}">{{ slide.cta_2_label }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% else %}
+<section class="hero-slide hero-slide--default">
+  <div class="container hero-slide__inner">
+    <h1>{{ site.company_name }}</h1>
+    <p>{{ site.tagline }}</p>
+  </div>
+</section>
+{% endif %}
+
+{% if page %}
+  {% for section in page.sections.all %}
+    {% if section.is_visible %}
+      {% render_section section as section_template %}
+      {% include section_template %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if not has_cta_section %}{% include "components/cta_band.html" %}{% endif %}
+{% endblock %}

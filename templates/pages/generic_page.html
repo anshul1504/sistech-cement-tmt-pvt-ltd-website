@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load core_extras %}
+
+{% block title %}{{ page.meta_title|default:page.title|default:site.company_name }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:site.tagline }}{% endblock %}
+
+{% block content %}
+{% include "components/hero.html" %}
+
+{% for section in sections %}
+  {% render_section section as section_template %}
+  {% include section_template %}
+{% endfor %}
+
+{% if not has_cta_section %}{% include "components/cta_band.html" %}{% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Server Error — {{ site.company_name }}{% endblock %}
+{% block content %}
+<section class="section section--pad-lg align-center">
+  <div class="container">
+    <h1>Something went wrong</h1>
+    <p>Please try again in a few minutes.</p>
+    <a class="btn btn--accent" href="{% url 'core:home' %}">Back to Home</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+.form-field label { font-weight: 600; font-size: 0.9rem; }
+.form-field input, .form-field select, .form-field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.85rem;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+.form-field .help-text { font-size: 0.8rem; color: var(--color-muted); }
+.form-field .error-text { font-size: 0.8rem; color: #B91C1C; }
+.form-honeypot { position: absolute; left: -9999px; }
+.form-success { background: var(--color-alt-background); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; }

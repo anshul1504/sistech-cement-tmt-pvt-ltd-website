@@ -1,0 +1,14 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <ol class="steps">
+      {% for step in section.steps.all %}
+      <li class="steps__item">
+        {% if step.icon %}<span class="steps__icon" data-icon="{{ step.icon }}"></span>{% endif %}
+        <h3>{{ step.title }}</h3>
+        {% if step.text %}<p>{{ step.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

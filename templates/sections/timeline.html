@@ -1,0 +1,14 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <ol class="timeline">
+      {% for item in section.timeline_items.all %}
+      <li class="timeline__item">
+        <span class="timeline__label">{{ item.year_or_label }}</span>
+        <h3>{{ item.title }}</h3>
+        {% if item.text %}<p>{{ item.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

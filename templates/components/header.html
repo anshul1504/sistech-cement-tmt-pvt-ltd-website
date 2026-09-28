@@ -1,0 +1,127 @@
+{% load static core_extras %}
+<header class="site-header {% if theme.sticky_header %}is-sticky{% endif %}" data-component="site-header">
+  {% if theme.top_bar_enabled %}
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <div class="top-bar__contact">
+        {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary }}</a>{% endif %}
+        {% if site.email_contact %}<a href="mailto:{{ site.email_contact }}">{% icon "mail" %}{{ site.email_contact }}</a>{% endif %}
+        {% if site.business_hours %}<span class="top-bar__hours">{% icon "clock" %}{{ site.business_hours }}</span>{% endif %}
+      </div>
+      <div class="top-bar__right">
+        {% if site.whatsapp_number %}
+        <a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_message|urlencode }}" target="_blank" rel="noopener" class="top-bar__whatsapp">{% icon "whatsapp" %}WhatsApp</a>
+        {% endif %}
+        <span class="top-bar__social">
+          {% if site.social_facebook %}<a href="{{ site.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% icon "facebook" %}</a>{% endif %}
+          {% if site.social_instagram %}<a href="{{ site.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% icon "instagram" %}</a>{% endif %}
+          {% if site.social_linkedin %}<a href="{{ site.social_linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% icon "linkedin" %}</a>{% endif %}
+          {% if site.social_youtube %}<a href="{{ site.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">{% icon "youtube" %}</a>{% endif %}
+          {% if site.social_x %}<a href="{{ site.social_x }}" target="_blank" rel="noopener" aria-label="X">{% icon "x" %}</a>{% endif %}
+          {% if site.social_indiamart %}<a href="{{ site.social_indiamart }}" target="_blank" rel="noopener" aria-label="IndiaMART">{% icon "indiamart" %}</a>{% endif %}
+        </span>
+        <a href="/faq/" class="top-bar__faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container site-header__inner">
+    <a href="{% url 'core:home' %}" class="site-header__logo">
+      {% if site.logo_header %}
+        <img class="logo-full" src="{{ site.logo_header.url }}" alt="{{ site.company_name }}">
+      {% endif %}
+      {% if site.logo_header_compact %}
+        <img class="logo-compact" src="{{ site.logo_header_compact.url }}" alt="{{ site.company_name }}">
+      {% elif not site.logo_header %}
+        <span class="logo-text">{{ site.company_name }}</span>
+      {% endif %}
+    </a>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+        {% for item in header_menu %}
+        <li class="{% if item.active_children %}has-dropdown{% endif %}">
+          {% if item.active_children %}
+          <a href="{{ item.get_url }}" class="{% menu_is_active item as is_act %}{% if is_act %}is-active{% endif %}"
+             aria-haspopup="true" aria-expanded="false">
+            {{ item.label }}{% icon "chevron-down" "dropdown-chevron" %}
+          </a>
+          <div class="dropdown {% if item.active_children|length >= 4 %}dropdown--grid{% endif %}">
+            <ul>
+              {% for child in item.active_children %}
+              <li>
+                <a href="{{ child.get_url }}" {% if child.new_tab %}target="_blank" rel="noopener"{% endif %}>
+                  <span class="dropdown__label">{{ child.label }}</span>
+                  {% if child.description %}<span class="dropdown__desc">{{ child.description }}</span>{% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% else %}
+          <a href="{{ item.get_url }}" {% if item.new_tab %}target="_blank" rel="noopener"{% endif %}
+             class="{% if item.is_button %}btn btn--accent btn--header-cta{% endif %}{% menu_is_active item as is_act %}{% if is_act %} is-active{% endif %}">
+            {{ item.label }}
+          </a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="tel:{{ site.phone_primary }}" class="header-call-btn" aria-label="Call {{ site.company_name }}">{% icon "call" %}</a>
+      <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        {% icon "menu" %}
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" data-drawer-overlay hidden></div>
+<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-label="Mobile navigation">
+  <div class="mobile-drawer__header">
+    {% if site.logo_header_compact %}
+      <img src="{{ site.logo_header_compact.url }}" alt="{{ site.company_name }}">
+    {% elif site.logo_header %}
+      <img src="{{ site.logo_header.url }}" alt="{{ site.company_name }}">
+    {% endif %}
+    <button class="mobile-drawer__close" aria-label="Close menu">{% icon "close" %}</button>
+  </div>
+
+  <nav class="mobile-drawer__nav" aria-label="Mobile primary">
+    <ul>
+      {% for item in header_menu %}
+      <li class="{% if item.active_children %}has-accordion{% endif %} {% if item.is_button %}mobile-cta{% endif %}">
+        {% if item.active_children %}
+        <button class="mobile-accordion__trigger" aria-expanded="false">
+          {{ item.label }}{% icon "chevron-down" "dropdown-chevron" %}
+        </button>
+        <div class="mobile-accordion__panel">
+          <a href="{{ item.get_url }}">{{ item.label }} Overview</a>
+          {% for child in item.active_children %}
+          <a href="{{ child.get_url }}">{{ child.label }}</a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <a href="{{ item.get_url }}" class="{% if item.is_button %}btn btn--accent btn--block{% endif %}">
+          {{ item.label }}
+        </a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <div class="mobile-drawer__contact">
+    {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary }}</a>{% endif %}
+    {% if site.email_contact %}<a href="mailto:{{ site.email_contact }}">{% icon "mail" %}{{ site.email_contact }}</a>{% endif %}
+    {% if site.whatsapp_number %}<a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_message|urlencode }}" target="_blank" rel="noopener">{% icon "whatsapp" %}WhatsApp Us</a>{% endif %}
+    <div class="mobile-drawer__social">
+      {% if site.social_facebook %}<a href="{{ site.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% icon "facebook" %}</a>{% endif %}
+      {% if site.social_instagram %}<a href="{{ site.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% icon "instagram" %}</a>{% endif %}
+      {% if site.social_linkedin %}<a href="{{ site.social_linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% icon "linkedin" %}</a>{% endif %}
+    </div>
+  </div>
+</aside>

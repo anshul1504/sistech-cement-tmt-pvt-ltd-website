@@ -1,0 +1,13 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <div class="stats-grid">
+      {% for stat in section.stats.all %}
+      <div class="stat">
+        <span class="stat__value" data-counter="{{ stat.value }}">{{ stat.value }}</span><span class="stat__suffix">{{ stat.suffix }}</span>
+        <span class="stat__label">{{ stat.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

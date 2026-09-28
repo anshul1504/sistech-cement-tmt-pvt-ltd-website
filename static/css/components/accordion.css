@@ -1,0 +1,11 @@
+.accordion__item { border-bottom: 1px solid var(--color-border); }
+.accordion__trigger {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+.accordion__panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.accordion__trigger[aria-expanded="true"] + .accordion__panel { max-height: 500px; padding-bottom: 1rem; }

@@ -1,0 +1,10 @@
+{% load core_extras %}
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    {% if section.subheading %}<p>{{ section.subheading }}</p>{% endif %}
+    {% if section.cta_band_button_label %}
+    <a class="btn btn--accent btn--lg" href="{{ section.cta_band_button_url }}">{{ section.cta_band_button_label }}</a>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,11 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container testimonial">
+    <blockquote>
+      <p>&ldquo;{{ section.testimonial_quote }}&rdquo;</p>
+      <footer>
+        <cite>{{ section.testimonial_author }}</cite>
+        {% if section.testimonial_role %}<span class="testimonial__role">{{ section.testimonial_role }}</span>{% endif %}
+      </footer>
+    </blockquote>
+  </div>
+</section>

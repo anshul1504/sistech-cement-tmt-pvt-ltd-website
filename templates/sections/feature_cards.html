@@ -1,0 +1,16 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }} align-{{ section.alignment }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    {% if section.subheading %}<p class="section__subheading">{{ section.subheading }}</p>{% endif %}
+    <div class="card-grid">
+      {% for card in section.feature_cards.all %}
+      <div class="card">
+        {% if card.icon %}<span class="card__icon" data-icon="{{ card.icon }}"></span>{% endif %}
+        <h3>{{ card.title }}</h3>
+        {% if card.text %}<p>{{ card.text }}</p>{% endif %}
+        {% if card.link %}<a href="{{ card.link }}" class="card__link">Learn more</a>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

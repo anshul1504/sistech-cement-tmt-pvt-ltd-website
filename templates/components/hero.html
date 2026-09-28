@@ -1,0 +1,22 @@
+{% load core_extras %}
+{% if page and page.hero_title %}
+<section class="page-hero" {% if page.hero_bg_image %}style="background-image:url('{{ page.hero_bg_image.url }}');"{% endif %}>
+  <div class="page-hero__overlay" style="opacity:{{ page.hero_overlay_opacity|default:50 }}%;"></div>
+  <div class="container page-hero__inner">
+    <h1>{{ page.hero_title }}</h1>
+    {% if page.hero_subtitle %}<p>{{ page.hero_subtitle }}</p>{% endif %}
+    <div class="page-hero__ctas">
+      {% if page.hero_cta_label %}<a class="btn btn--accent" href="{{ page.hero_cta_url }}">{{ page.hero_cta_label }}</a>{% endif %}
+      {% if page.hero_cta_2_label %}<a class="btn btn--outline" href="{{ page.hero_cta_2_url }}">{{ page.hero_cta_2_label }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="page-hero page-hero--default">
+  <div class="container page-hero__inner">
+    <h1>{{ page.title|default:"SISTECH Cement & TMT" }}</h1>
+  </div>
+</section>
+{% endif %}
+
+{% if page.show_breadcrumb %}{% include "components/breadcrumb.html" %}{% endif %}

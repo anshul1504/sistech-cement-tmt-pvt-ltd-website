@@ -1,0 +1,15 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container">
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <div class="accordion" data-component="accordion">
+      {% for link in section.faq_links.all %}
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">{{ link.faq_item.question }}</button>
+        <div class="accordion__panel">
+          <p>{{ link.faq_item.answer|safe }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

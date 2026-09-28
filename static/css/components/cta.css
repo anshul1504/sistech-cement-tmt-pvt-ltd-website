@@ -1,0 +1,48 @@
+.cta-band {
+  position: relative;
+  background: linear-gradient(120deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  padding-block: 3.5rem;
+  overflow: hidden;
+  border-top: 4px solid var(--color-accent);
+}
+.cta-band__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+.cta-band h2 { color: #fff; }
+.cta-band p { color: rgba(255,255,255,0.85); }
+
+@media (min-width: 768px) {
+  .cta-band__inner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 90;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+}
+.back-to-top[hidden] { display: none; }

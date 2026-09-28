@@ -1,0 +1,14 @@
+<section class="section section--{{ section.background_style }} section--pad-{{ section.padding_size }}">
+  <div class="container image-text image-text--{{ section.image_text_position }}">
+    {% if section.image_text_image %}
+    <div class="image-text__media">
+      <img src="{{ section.image_text_image.url }}" alt="{{ section.heading }}" loading="lazy">
+    </div>
+    {% endif %}
+    <div class="image-text__body">
+      {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+      {% if section.subheading %}<p class="section__subheading">{{ section.subheading }}</p>{% endif %}
+      <div class="richtext">{{ section.image_text_body|safe }}</div>
+    </div>
+  </div>
+</section>
