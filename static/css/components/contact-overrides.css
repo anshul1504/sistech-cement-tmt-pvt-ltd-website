@@ -1,0 +1,31 @@
+/* Contact hero artwork override. Kept separate so the generated image remains
+   easy to replace without touching the main responsive contact stylesheet. */
+.contact-hero {
+  background: var(--color-primary-dark) var(--contact-hero-image) center / cover no-repeat;
+}
+
+.contact-hero::before {
+  width: auto;
+  height: auto;
+  inset: 0;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 22, 58, 0.98) 0%,
+    rgba(7, 28, 67, 0.9) 44%,
+    rgba(7, 28, 67, 0.22) 72%,
+    rgba(7, 28, 67, 0.06) 100%
+  );
+}
+
+.contact-hero__inner { display: block; }
+.contact-main__layout { align-items: start; }
+.contact-info-panel { position: sticky; top: 90px; }
+.contact-main { background: #fff; }
+
+@media (max-width: 599.98px) {
+  .contact-hero { background-position: 64% center; }
+  .contact-hero::before { background: rgba(5, 22, 58, 0.86); }
+  .contact-info-panel { position: static; }
+}

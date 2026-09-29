@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Contact SISTECH Cement & TMT | Sales & Support" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Contact SISTECH for cement and TMT product enquiries, project requirements, dealership information, customer support and business assistance." }}{% endblock %}
+{% block content %}
+<section class="contact-hero" style="--contact-hero-image:url('{% static 'images/contact-hero-support.png' %}')"><div class="container contact-hero__inner">
+  <div class="contact-hero__copy">
+    <nav class="contact-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span>/</span><span aria-current="page">Contact Us</span></nav>
+    <span class="contact-kicker">Connect with SISTECH</span><h1>Let’s Build What’s Next</h1>
+    <p>Whether you need product guidance, project supply, dealership information or customer support, our team is ready to help.</p>
+    <div class="contact-hero__actions"><a class="btn btn--accent" href="#contact-form">Send an Enquiry {% icon "arrow-right" %}</a>{% if site.phone_primary %}<a class="contact-hero__call" href="tel:{{ site.phone_primary }}">{% icon "phone" %}<span><small>Speak with our team</small><strong>{{ site.phone_primary|india_phone }}</strong></span></a>{% endif %}</div>
+  </div>
+</div></section>
+
+<section class="contact-channels"><div class="container contact-channels__grid">
+  {% if site.phone_primary %}<a class="contact-channel" href="tel:{{ site.phone_primary }}"><span class="contact-channel__icon">{% icon "phone" %}</span><span><small>Call our team</small><strong>{{ site.phone_primary|india_phone }}</strong><em>Tap to call</em></span></a>{% endif %}
+  {% if site.email_contact %}<a class="contact-channel" href="mailto:{{ site.email_contact }}"><span class="contact-channel__icon">{% icon "mail" %}</span><span><small>General enquiries</small><strong>{{ site.email_contact }}</strong><em>Send an email</em></span></a>{% endif %}
+  {% if site.whatsapp_number %}<a class="contact-channel" href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_message|urlencode }}" target="_blank" rel="noopener"><span class="contact-channel__icon contact-channel__icon--whatsapp">{% icon "whatsapp" %}</span><span><small>Quick assistance</small><strong>Chat on WhatsApp</strong><em>Start a conversation</em></span></a>{% endif %}
+  {% if site.business_hours %}<div class="contact-channel contact-channel--static"><span class="contact-channel__icon">{% icon "clock" %}</span><span><small>Business hours</small><strong>{{ site.business_hours }}</strong><em>India Standard Time</em></span></div>{% endif %}
+</div></section>
+
+<section class="contact-main section--pad-lg" id="contact-form"><div class="container contact-main__layout">
+  <aside class="contact-info-panel">
+    <span class="contact-kicker">The right team, faster</span><h2>Tell Us How We Can Help</h2><p>Choose your enquiry type and share the essential details. This helps us route your request correctly.</p>
+    <ul class="contact-info-panel__steps"><li><span>1</span><div><strong>Submit your requirement</strong><p>Complete the short enquiry form.</p></div></li><li><span>2</span><div><strong>Internal routing</strong><p>We direct it to the appropriate team.</p></div></li><li><span>3</span><div><strong>Team response</strong><p>A representative connects with you.</p></div></li></ul>
+    <div class="contact-info-panel__departments"><h3>Specific department?</h3>{% if site.email_support %}<a href="mailto:{{ site.email_support }}"><span>Customer support</span><strong>{{ site.email_support }}</strong></a>{% endif %}{% if site.email_career %}<a href="mailto:{{ site.email_career }}"><span>Careers</span><strong>{{ site.email_career }}</strong></a>{% endif %}</div>
+  </aside>
+  <div class="contact-form-card">
+    {% if submitted %}<div class="contact-success" role="status"><span class="contact-success__mark">✓</span><span class="contact-kicker">Enquiry received</span><h2>Thank You for Contacting Us</h2><p>Your enquiry has been recorded successfully. Our team will review the details and connect with you shortly.</p><div class="contact-success__actions">{% if site.phone_primary %}<a class="btn btn--primary" href="tel:{{ site.phone_primary }}">Call Us</a>{% endif %}<a class="btn btn--outline" href="{% url 'core:contact' %}">Send Another Enquiry</a></div></div>
+    {% else %}<div class="contact-form-card__heading"><span class="contact-kicker">Send an enquiry</span><h2>How Can We Help?</h2><p>Fields marked with <b>*</b> are required.</p></div><div class="contact-form__trust"><span>✓ Secure submission</span><span>✓ Direct team review</span><span>✓ No marketing spam</span></div>
+    <form method="post" class="contact-form" novalidate>{% csrf_token %}{{ form.website }}{% if form.non_field_errors %}<div class="contact-form__alert">{{ form.non_field_errors }}</div>{% endif %}<div class="contact-form__grid">{% for field in form.visible_fields %}<div class="form-field{% if field.name == 'message' %} form-field--wide{% endif %}"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span aria-hidden="true">*</span>{% endif %}</label>{% if field.name == "phone" %}<div class="phone-field"><span>+91</span>{{ field }}</div>{% else %}{{ field }}{% endif %}{% for error in field.errors %}<span class="error-text">{{ error }}</span>{% endfor %}</div>{% endfor %}</div><button class="btn btn--accent contact-form__submit" type="submit">Submit Enquiry {% icon "arrow-right" %}</button><p class="contact-form__privacy">By submitting this form, you agree to be contacted regarding your enquiry. Your information is used only to respond to this request.</p></form>{% endif %}
+  </div>
+</div></section>
+
+{% endblock %}

@@ -1,5 +1,6 @@
+{% load core_extras %}
 <a class="whatsapp-button"
    href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_message|urlencode }}"
    target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  WA
+  {% icon "whatsapp" %}
 </a>

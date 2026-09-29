@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Safety & Sustainability in Construction | SISTECH" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Explore SISTECH's approach to workplace safety, responsible material handling, resource awareness and sustainable construction-material operations." }}{% endblock %}
+{% block content %}
+<section class="ss-hero" style="--ss-hero:url('{% static 'images/safety/safety-sustainability-hero.png' %}')">
+  <div class="container ss-hero__inner">
+    <nav class="ss-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span>/</span><span aria-current="page">Safety &amp; Sustainability</span></nav>
+    <span class="ss-kicker">Responsible progress</span>
+    <h1>Safer Practices.<br>Sustainable Thinking.</h1>
+    <p>We support disciplined, responsible construction-material operations—protecting people, handling resources thoughtfully and building trust throughout the supply chain.</p>
+    <div class="ss-hero__actions"><a class="btn btn--accent" href="#our-approach">Explore Our Approach {% icon "arrow-right" %}</a><span><strong>People. Materials. Future.</strong><small>A practical commitment to responsible growth</small></span></div>
+  </div>
+</section>
+
+<section class="ss-intro section--pad-lg" id="our-approach"><div class="container ss-intro__grid">
+  <div><span class="ss-kicker">Our commitment</span><h2>Responsibility Built Into Everyday Work</h2><p>Safety and sustainability are strongest when they guide routine decisions. From workplace awareness and protective equipment to organised storage and efficient material movement, we encourage practices that support people, products and long-term business resilience.</p></div>
+  <aside class="ss-promise"><span>01</span><div><strong>Safety first</strong><p>Awareness, preparedness and disciplined work practices.</p></div><span>02</span><div><strong>Responsible operations</strong><p>Thoughtful handling of materials, resources and surroundings.</p></div></aside>
+</div></section>
+
+<section class="ss-pillars section--pad-lg"><div class="container"><header class="ss-heading"><span class="ss-kicker">Core priorities</span><h2>Our Safety &amp; Sustainability Framework</h2><p>A clear, practical framework helps teams and partners maintain responsible practices across daily operations.</p></header><div class="ss-pillars__grid">
+  <article><span class="ss-card__number">01</span><h3>People &amp; Workplace Safety</h3><p>Promoting protective equipment, safe behaviour, clear work zones and shared responsibility across operational environments.</p></article>
+  <article><span class="ss-card__number">02</span><h3>Material Stewardship</h3><p>Encouraging organised storage, careful handling and protection of cement and TMT to reduce avoidable damage and waste.</p></article>
+  <article><span class="ss-card__number">03</span><h3>Resource Awareness</h3><p>Supporting practical attention to energy, water, packaging and other resources within the activities we influence.</p></article>
+  <article><span class="ss-card__number">04</span><h3>Responsible Partnerships</h3><p>Working with manufacturing and channel partners who value consistent quality, responsible conduct and continuous improvement.</p></article>
+</div></div></section>
+
+<section class="ss-operations section--pad-lg"><div class="container ss-operations__grid">
+  <figure class="ss-image-card"><img src="{% static 'images/safety/responsible-operations.png' %}" alt="Safety supervisor reviewing responsible material handling at a construction materials facility" loading="lazy" width="2048" height="1365"><figcaption><strong>Responsible operations</strong><span>Order, awareness and care across the material journey.</span></figcaption></figure>
+  <div class="ss-operations__content"><span class="ss-kicker">From intent to action</span><h2>Practical Controls Across Operations</h2><p>Responsible performance is supported through consistent habits—not one-time activity. Our approach focuses on the areas where everyday attention can make a meaningful difference.</p><ul><li><strong>Safe movement:</strong> Clearly managed pedestrian, vehicle and material-handling zones.</li><li><strong>Protective discipline:</strong> Appropriate PPE and task awareness for operational environments.</li><li><strong>Storage care:</strong> Dry, orderly cement storage and stable handling of bundled TMT.</li><li><strong>Clean work areas:</strong> Good housekeeping that supports safer, more efficient operations.</li><li><strong>Feedback culture:</strong> Encouraging observations and improvement inputs from teams and partners.</li></ul></div>
+</div></section>
+
+<section class="ss-cycle section--pad-lg"><div class="container"><header class="ss-heading ss-heading--light"><span class="ss-kicker">Continuous responsibility</span><h2>A Simple Improvement Cycle</h2><p>Consistent progress comes from repeating the right actions and learning from outcomes.</p></header><ol class="ss-cycle__steps"><li><span>01</span><strong>Identify</strong><p>Recognise workplace, handling and resource-related considerations.</p></li><li><span>02</span><strong>Prepare</strong><p>Clarify responsibilities and suitable preventive practices.</p></li><li><span>03</span><strong>Act</strong><p>Apply disciplined safety and operational controls.</p></li><li><span>04</span><strong>Review</strong><p>Observe outcomes, feedback and opportunities to improve.</p></li></ol></div></section>
+
+<section class="ss-assurance section--pad-lg"><div class="container ss-assurance__grid"><div><span class="ss-kicker">Shared responsibility</span><h2>Better Outcomes Begin With Better Choices</h2><p>Sustainability is a continuing direction rather than a single claim. We aim to grow responsibly, maintain customer trust and encourage sound practices across the relationships and operations within our reach.</p></div><div class="ss-assurance__points"><div><strong>Protect people</strong><span>Keep safety visible in everyday decisions.</span></div><div><strong>Protect materials</strong><span>Reduce damage through organised handling.</span></div><div><strong>Protect trust</strong><span>Operate transparently and improve continuously.</span></div></div></div></section>
+
+<section class="ss-cta"><div class="container ss-cta__inner"><div><span class="ss-kicker">Build responsibly</span><h2>Have a Product or Safety Enquiry?</h2><p>Connect with our team for product guidance, supply coordination and responsible material-handling support.</p></div><div><a class="btn btn--accent" href="{% url 'core:contact' %}">Contact Our Team {% icon "arrow-right" %}</a><a href="tel:{{ site.phone_primary|cut:' ' }}">{{ site.phone_primary|india_phone }}</a></div></div></section>
+{% endblock %}

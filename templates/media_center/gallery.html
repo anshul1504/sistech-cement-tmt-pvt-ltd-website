@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Photo & Video Gallery | SISTECH Cement & TMT" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Explore SISTECH Cement & TMT company events, dealer meets, projects and manufacturing highlights through our photo and video gallery." }}{% endblock %}
+{% block content %}
+<section class="media-hero" style="--media-hero-image:url('{% static 'images/gallery/gallery-hero-industrial.png' %}')">
+  <div class="container media-hero__inner">
+    <nav class="media-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span aria-hidden="true">/</span><span aria-current="page">Media Gallery</span></nav>
+    <span class="media-kicker">Inside SISTECH</span>
+    <h1>Stories of Strength,<br>Captured in Action</h1>
+    <p>Explore moments from our projects, partner events, manufacturing network and the people building stronger communities with SISTECH.</p>
+    {% if total_items %}<div class="media-hero__stats"><span><strong>{{ total_items|stringformat:"02d" }}</strong> Media highlights</span><span><strong>{{ categories|length|stringformat:"02d" }}</strong> Collections</span></div>{% endif %}
+  </div>
+</section>
+
+<section class="media-gallery section--pad-lg" data-component="gallery-filter">
+  <div class="container">
+    <header class="media-gallery__heading"><div><span class="media-kicker">Our media library</span><h2>Explore the Gallery</h2><p>Choose a collection or media type. Select any item for a full-screen view.</p></div></header>
+    <div class="media-filters" role="toolbar" aria-label="Filter gallery">
+      <button type="button" class="is-active" data-filter="all">All <span>{{ total_items }}</span></button>
+      {% if media_counts.image %}<button type="button" data-filter="image">Photos <span>{{ media_counts.image }}</span></button>{% endif %}
+      {% if media_counts.video %}<button type="button" data-filter="video">Videos <span>{{ media_counts.video }}</span></button>{% endif %}
+      {% if media_counts.youtube %}<button type="button" data-filter="youtube">YouTube <span>{{ media_counts.youtube }}</span></button>{% endif %}
+      {% for category in categories %}<button type="button" data-filter="{{ category.slug }}">{{ category.name }}</button>{% endfor %}
+    </div>
+
+    <div class="media-grid" data-component="lightbox">
+      {% for item in items %}
+      <article class="media-card{% if item.is_featured %} media-card--featured{% endif %}" data-category="{{ item.media_type }} {{ item.category.slug }}">
+        <button type="button" class="media-card__open" data-lightbox-item data-media-type="{{ item.media_type }}" data-media-src="{{ item.media_url }}" data-title="{{ item.title }}" data-caption="{{ item.caption }}" data-location="{{ item.location }}" data-date="{{ item.event_date|date:'d M Y' }}"{% if item.media_type != 'youtube' %} data-download="{{ item.media_url }}"{% endif %} aria-label="Open {{ item.title }}">
+          <span class="media-card__visual">
+            {% if item.display_thumbnail %}<img src="{{ item.display_thumbnail }}" alt="{{ item.alt_text|default:item.title }}" loading="lazy" width="720" height="520">{% else %}<span class="media-card__placeholder">{% icon "play" %}</span>{% endif %}
+            <span class="media-card__shade"></span>
+            {% if item.media_type != 'image' %}<span class="media-card__play" aria-hidden="true">{% icon "play" %}</span>{% endif %}
+            <span class="media-card__type">{{ item.get_media_type_display }}</span>
+          </span>
+          <span class="media-card__body"><span class="media-card__category">{{ item.category.name }}</span><strong>{{ item.title }}</strong>{% if item.caption %}<span class="media-card__caption">{{ item.caption|truncatechars:100 }}</span>{% endif %}<span class="media-card__meta">{% if item.event_date %}<span>{{ item.event_date|date:"d M Y" }}</span>{% endif %}{% if item.location %}<span>{{ item.location }}</span>{% endif %}</span></span>
+        </button>
+      </article>
+      {% empty %}
+      <div class="media-empty"><span>{% icon "image" %}</span><h3>Gallery updates are on the way</h3><p>New project, event and company highlights will appear here soon.</p></div>
+      {% endfor %}
+    </div>
+    <p class="media-no-results" hidden>No media found in this collection.</p>
+    <nav class="site-pagination" data-gallery-pagination aria-label="Gallery pages" hidden><button type="button" class="site-pagination__nav" data-page-prev>Previous</button><span class="site-pagination__status" data-page-status></span><button type="button" class="site-pagination__nav" data-page-next>Next</button></nav>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,210 @@
+/* Premium visual layer for the dedicated CSR experience. */
+.csr-hero__inner {
+  padding-block: 4rem;
+}
+
+.csr-hero__compass {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  width: min(480px, 100%);
+  margin-top: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, .17);
+  border-radius: 12px;
+  background: rgba(5, 24, 61, .54);
+  box-shadow: 0 20px 45px -28px rgba(0, 0, 0, .8);
+  backdrop-filter: blur(10px);
+}
+
+.csr-hero__compass>div {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .8rem 1rem;
+}
+
+.csr-hero__compass>div+div {
+  border-left: 1px solid rgba(255, 255, 255, .14);
+}
+
+.csr-hero__compass span {
+  color: var(--color-accent);
+  font-size: .65rem;
+  font-weight: 700;
+}
+
+.csr-hero__compass strong {
+  color: #fff;
+  font-size: .78rem;
+  letter-spacing: .03em;
+}
+
+.csr-impact-bar {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  background: var(--color-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.csr-impact-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.8rem, 2vw, 2rem);
+  min-height: 68px;
+  max-width: min(1540px, 90vw);
+}
+
+.csr-impact-bar p {
+  margin: 0;
+  color: rgba(255, 255, 255, .84);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.csr-impact-bar span {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.csr-focus__grid article {
+  position: relative;
+  overflow: hidden;
+}
+
+.csr-focus__grid article::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  bottom: -44px;
+  width: 105px;
+  height: 105px;
+  border: 18px solid rgba(20, 51, 127, .045);
+  border-radius: 50%;
+  transition: transform .3s ease;
+}
+
+.csr-focus__grid article:hover::after {
+  transform: scale(1.14);
+}
+
+.csr-focus__grid article:nth-child(2n) .csr-card__number,
+.csr-focus__grid article:nth-child(2n)>span {
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+}
+
+.csr-image-card {
+  isolation: isolate;
+  transform: rotate(-1deg);
+}
+
+.csr-image-card::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+  border-radius: inherit;
+}
+
+.csr-image-card__label {
+  position: absolute;
+  z-index: 3;
+  top: .8rem;
+  left: .8rem;
+  padding: .4rem .7rem;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.csr-image-card figcaption {
+  z-index: 3;
+}
+
+.csr-skills__points>div {
+  position: relative;
+  overflow: hidden;
+  padding-top: 1.15rem;
+}
+
+.csr-skills__points b {
+  position: absolute;
+  top: .45rem;
+  right: .65rem;
+  color: rgba(20, 51, 127, .1);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.csr-principles article {
+  transition: background .25s ease;
+}
+
+.csr-principles article:hover {
+  background: rgba(255, 255, 255, .055);
+}
+
+.csr-commitment__quote {
+  overflow: hidden;
+}
+
+.csr-commitment__quote::after {
+  content: "";
+  position: absolute;
+  right: -45px;
+  bottom: -55px;
+  width: 145px;
+  height: 145px;
+  border: 25px solid rgba(242, 183, 5, .08);
+  border-radius: 50%;
+}
+
+@media (max-width: 699.98px) {
+  .csr-hero__inner {
+    padding-block: 3rem;
+  }
+
+  .csr-hero__compass {
+    grid-template-columns: 1fr;
+    max-width: 230px;
+  }
+
+  .csr-hero__compass>div+div {
+    border-top: 1px solid rgba(255, 255, 255, .14);
+    border-left: 0;
+  }
+
+  .csr-impact-bar .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 100%;
+    padding-block: .55rem;
+  }
+
+  .csr-impact-bar p {
+    padding: .45rem;
+    font-size: .62rem;
+  }
+
+  .csr-impact-bar span {
+    display: none;
+  }
+
+  .csr-image-card {
+    transform: none;
+  }
+}

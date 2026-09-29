@@ -1,43 +1,15 @@
-{% extends "base.html" %}
-{% load core_extras %}
-
-{% block title %}{{ page.meta_title|default:site.company_name }}{% endblock %}
-{% block meta_description %}{{ page.meta_description|default:site.tagline }}{% endblock %}
-
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"SISTECH Cement & TMT | Quality Construction Materials" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"SISTECH supplies quality cement and TMT products through trusted manufacturing partnerships, a growing dealer network and customer-focused service." }}{% endblock %}
 {% block content %}
-{% if hero_slides %}
-<section class="hero-slider" data-component="hero-slider">
-  {% for slide in hero_slides %}
-  <div class="hero-slide {% if forloop.first %}is-active{% endif %}" {% if slide.image %}style="background-image:url('{{ slide.image.url }}');"{% endif %}>
-    <div class="hero-slide__overlay"></div>
-    <div class="container hero-slide__inner">
-      <h1>{{ slide.heading }}</h1>
-      {% if slide.subheading %}<p>{{ slide.subheading }}</p>{% endif %}
-      <div class="hero-slide__ctas">
-        {% if slide.cta_1_label %}<a class="btn btn--accent btn--lg" href="{{ slide.cta_1_url }}">{{ slide.cta_1_label }}</a>{% endif %}
-        {% if slide.cta_2_label %}<a class="btn btn--outline btn--lg" href="{{ slide.cta_2_url }}">{{ slide.cta_2_label }}</a>{% endif %}
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</section>
-{% else %}
-<section class="hero-slide hero-slide--default">
-  <div class="container hero-slide__inner">
-    <h1>{{ site.company_name }}</h1>
-    <p>{{ site.tagline }}</p>
-  </div>
-</section>
-{% endif %}
-
-{% if page %}
-  {% for section in page.sections.all %}
-    {% if section.is_visible %}
-      {% render_section section as section_template %}
-      {% include section_template %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-{% if not has_cta_section %}{% include "components/cta_band.html" %}{% endif %}
+<section class="home-hero" style="--home-hero:url('{% static 'images/products/products-hero-exact-v3.png' %}')"><div class="container home-hero__inner"><span class="home-kicker">SISTECH Cement &amp; TMT Pvt. Ltd.</span><h1>Solid Foundation.<br>Strong Future.</h1><p>Quality cement and TMT solutions supported by trusted manufacturing partnerships, responsive service and a growing distribution network.</p><div class="home-hero__actions"><a class="btn btn--accent" href="{% url 'core:products' %}">Explore Products {% icon "arrow-right" %}</a><a class="btn home-btn--ghost" href="{% url 'core:distribution_network' %}">Join as a Dealer</a></div><div class="home-hero__meta"><span><b>Cement</b><small>OPC, PPC &amp; PSC categories</small></span><span><b>TMT Bars</b><small>Reinforcement solutions</small></span><span><b>Partner Network</b><small>Regional supply support</small></span></div></div></section>
+<section class="home-intro section--pad-lg"><div class="container home-intro__grid"><div><span class="home-kicker">About SISTECH</span><h2>Materials, Partnerships and Service Working Together</h2></div><div><p>SISTECH Cement &amp; TMT Pvt. Ltd. is an Indian construction-materials company serving infrastructure, residential, commercial and industrial requirements. Our partner-led model connects manufacturing capability with an expanding distribution network.</p><div class="home-inline-links"><a href="{% url 'core:about' %}">Our Company {% icon "arrow-right" %}</a><a href="{% url 'core:leadership' %}">Leadership {% icon "arrow-right" %}</a><a href="{% url 'core:roadmap' %}">Growth Roadmap {% icon "arrow-right" %}</a></div></div></div></section>
+<section class="home-products section--pad-lg"><div class="container"><header class="home-heading"><span class="home-kicker">Our product portfolio</span><h2>Building Materials for Diverse Requirements</h2><p>Explore the core product categories supporting dependable construction outcomes.</p></header><div class="home-products__grid"><article class="home-product"><img src="{% static 'images/products/cement-range-exact-v2.png' %}" alt="SISTECH branded cement bag at a construction site" width="1536" height="1024" loading="lazy"><div class="home-product__overlay"></div><div class="home-product__content"><span>01 / Cement</span><h3>SISTECH Cement Range</h3><p>OPC, PPC and PSC categories for suitable project specifications and construction applications.</p><a href="{% url 'core:products' %}#cement-range">Explore Cement {% icon "arrow-right" %}</a></div></article><article class="home-product"><img src="{% static 'images/products/tmt-range-v2.png' %}" alt="SISTECH TMT 550D reinforcement bars" width="1536" height="1024" loading="lazy"><div class="home-product__overlay"></div><div class="home-product__content"><span>02 / TMT</span><h3>SISTECH TMT Bars</h3><p>Steel reinforcement products with attention to rib pattern, finish, consistency and traceability.</p><a href="{% url 'core:products' %}#tmt-range">Explore TMT {% icon "arrow-right" %}</a></div></article></div></div></section>
+<section class="home-ecosystem section--pad-lg"><div class="container"><header class="home-heading"><span class="home-kicker">Our operating ecosystem</span><h2>From Manufacturing Partnership to Market Support</h2></header><div class="home-ecosystem__grid"><a href="{% url 'core:manufacturing_partners' %}"><b>01</b><div>{% icon "contractor" %}</div><h3>Manufacturing Partners</h3><p>Strategic cement and TMT manufacturing relationships supporting regional availability.</p><span>Explore network {% icon "arrow-right" %}</span></a><a href="{% url 'core:distribution_network' %}"><b>02</b><div>{% icon "store" %}</div><h3>Distribution Network</h3><p>Dealer partnerships designed to bring dependable materials closer to growing markets.</p><span>View opportunities {% icon "arrow-right" %}</span></a><a href="{% url 'core:quality_assurance' %}"><b>03</b><div>{% icon "certificate" %}</div><h3>Quality Assurance</h3><p>A structured focus on product consistency, packaging, handling and customer feedback.</p><span>Our quality approach {% icon "arrow-right" %}</span></a></div></div></section>
+<section class="home-programs section--pad-lg"><div class="container home-programs__layout"><div class="home-programs__intro"><span class="home-kicker">Recognition programs</span><h2>Growing with Every Partner in Progress</h2><p>Purpose-built programs recognise and strengthen the dealers, engineers, masons and contractors who contribute to construction outcomes.</p><a class="btn btn--accent" href="{% url 'core:rewards_recognition' %}">Rewards &amp; Recognition {% icon "arrow-right" %}</a></div><div class="home-programs__grid"><a href="{% url 'core:star_dealer_program' %}"><span>For channel partners</span><h3>Star Dealer Program</h3><small>Explore programme {% icon "arrow-right" %}</small></a><a href="{% url 'core:star_engineer_program' %}"><span>For technical professionals</span><h3>Star Engineer Program</h3><small>Explore programme {% icon "arrow-right" %}</small></a><a href="{% url 'core:star_mason_contractor_scheme' %}"><span>For skilled professionals</span><h3>Star Mason Scheme</h3><small>Explore programme {% icon "arrow-right" %}</small></a><a href="{% url 'core:star_mason_contractor_scheme' %}"><span>For project leaders</span><h3>Star Contractor Scheme</h3><small>Explore programme {% icon "arrow-right" %}</small></a></div></div></section>
+<section class="home-responsibility section--pad-lg"><div class="container"><header class="home-heading"><span class="home-kicker">Responsible progress</span><h2>Building Beyond Products</h2><p>Our responsibility extends to safer practices, sustainable thinking and stronger communities.</p></header><div class="home-responsibility__grid"><a href="{% url 'core:safety_sustainability' %}" style="--home-resp:url('{% static 'images/safety/safety-sustainability-hero.png' %}')"><span>Safety &amp; Sustainability</span><h3>Responsible Growth, Safer Practices</h3><p>Explore our approach to workplace awareness, resource responsibility and long-term progress.</p><small>Learn more {% icon "arrow-right" %}</small></a><a href="{% url 'core:csr' %}" style="--home-resp:url('{% static 'images/csr/csr-community-hero.png' %}')"><span>Corporate Responsibility</span><h3>Stronger Communities, Shared Progress</h3><p>See how community focus and professional development support broader construction ecosystems.</p><small>Explore CSR {% icon "arrow-right" %}</small></a></div></div></section>
+<section class="home-roadmap"><div class="container home-roadmap__inner"><div><span class="home-kicker">Our growth roadmap</span><h2>Regional Strength to Wider Reach</h2><p>A phased strategy focused on stronger operations, responsible market expansion and long-term partnerships.</p></div><div class="home-roadmap__steps"><span><b>01</b>Strengthen</span><i></i><span><b>02</b>Expand</span><i></i><span><b>03</b>Connect</span></div><a class="btn btn--accent" href="{% url 'core:roadmap' %}">View Roadmap {% icon "arrow-right" %}</a></div></section>
+<section class="home-media section--pad-lg"><div class="container"><div class="home-media__header"><header class="home-heading"><span class="home-kicker">News &amp; media</span><h2>Ideas, Updates and Company Stories</h2></header><div><a href="{% url 'blog:list' %}">View all insights {% icon "arrow-right" %}</a><a href="{% url 'media_center:gallery' %}">Open gallery {% icon "arrow-right" %}</a></div></div><div class="home-media__grid">{% for post in latest_posts %}<article><a class="home-media__image" href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}" alt="{{ post.image_alt }}" width="720" height="460" loading="lazy"></a><div><span>{{ post.category.name }} · {{ post.reading_time }} min read</span><h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3><p>{{ post.excerpt|truncatewords:20 }}</p></div></article>{% empty %}<article class="home-media__fallback"><div><span>Construction insights</span><h3>Practical knowledge for stronger construction</h3><p>Visit the SISTECH insights section for product guidance, company news and market updates.</p><a href="{% url 'blog:list' %}">Browse insights {% icon "arrow-right" %}</a></div></article>{% endfor %}</div></div></section>
+<section class="home-careers section--pad-lg"><div class="container home-careers__inner"><div><span class="home-kicker">Careers at SISTECH</span><h2>Build Your Career with a Growing Network</h2><p>Explore opportunities to contribute across sales, operations, distribution and construction-material support.</p></div><a class="btn btn--accent" href="{% url 'careers:list' %}">View Open Positions {% icon "arrow-right" %}</a></div></section>
+<section class="home-cta"><div class="container home-cta__inner"><div><span class="home-kicker">Start a conversation</span><h2>Need Product Information or a Partnership Opportunity?</h2><p>Connect with SISTECH for cement, TMT, supply and dealership enquiries.</p></div><div><a class="btn btn--accent" href="{% url 'core:contact' %}">Contact Our Team {% icon "arrow-right" %}</a><a href="{% url 'core:distribution_network' %}">Join as a Dealer</a></div></div></section>
 {% endblock %}

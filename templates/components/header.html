@@ -4,7 +4,7 @@
   <div class="top-bar">
     <div class="container top-bar__inner">
       <div class="top-bar__contact">
-        {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary }}</a>{% endif %}
+        {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary|india_phone }}</a>{% endif %}
         {% if site.email_contact %}<a href="mailto:{{ site.email_contact }}">{% icon "mail" %}{{ site.email_contact }}</a>{% endif %}
         {% if site.business_hours %}<span class="top-bar__hours">{% icon "clock" %}{{ site.business_hours }}</span>{% endif %}
       </div>
@@ -20,7 +20,6 @@
           {% if site.social_x %}<a href="{{ site.social_x }}" target="_blank" rel="noopener" aria-label="X">{% icon "x" %}</a>{% endif %}
           {% if site.social_indiamart %}<a href="{{ site.social_indiamart }}" target="_blank" rel="noopener" aria-label="IndiaMART">{% icon "indiamart" %}</a>{% endif %}
         </span>
-        <a href="/faq/" class="top-bar__faq">FAQ</a>
       </div>
     </div>
   </div>
@@ -62,7 +61,7 @@
           {% else %}
           <a href="{{ item.get_url }}" {% if item.new_tab %}target="_blank" rel="noopener"{% endif %}
              class="{% if item.is_button %}btn btn--accent btn--header-cta{% endif %}{% menu_is_active item as is_act %}{% if is_act %} is-active{% endif %}">
-            {{ item.label }}
+            {% if item.is_button %}{% icon "store" %}{% endif %}{{ item.label }}
           </a>
           {% endif %}
         </li>
@@ -99,14 +98,13 @@
           {{ item.label }}{% icon "chevron-down" "dropdown-chevron" %}
         </button>
         <div class="mobile-accordion__panel">
-          <a href="{{ item.get_url }}">{{ item.label }} Overview</a>
           {% for child in item.active_children %}
           <a href="{{ child.get_url }}">{{ child.label }}</a>
           {% endfor %}
         </div>
         {% else %}
         <a href="{{ item.get_url }}" class="{% if item.is_button %}btn btn--accent btn--block{% endif %}">
-          {{ item.label }}
+          {% if item.is_button %}{% icon "store" %}{% endif %}{{ item.label }}
         </a>
         {% endif %}
       </li>
@@ -115,7 +113,7 @@
   </nav>
 
   <div class="mobile-drawer__contact">
-    {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary }}</a>{% endif %}
+    {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary|india_phone }}</a>{% endif %}
     {% if site.email_contact %}<a href="mailto:{{ site.email_contact }}">{% icon "mail" %}{{ site.email_contact }}</a>{% endif %}
     {% if site.whatsapp_number %}<a href="https://wa.me/{{ site.whatsapp_number }}?text={{ site.whatsapp_message|urlencode }}" target="_blank" rel="noopener">{% icon "whatsapp" %}WhatsApp Us</a>{% endif %}
     <div class="mobile-drawer__social">

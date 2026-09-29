@@ -9,6 +9,8 @@ import { initGalleryFilter } from "./gallery-filter.js";
 import { initHeroSlider } from "./hero-slider.js";
 import { initBackToTop } from "./back-to-top.js";
 import { initMaps } from "./map.js";
+import { initDealerWizard } from "./dealer-wizard.js";
+import { initLeadershipCarousel } from "./leadership-carousel-v2.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
@@ -22,4 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroSlider();
   initBackToTop();
   initMaps();
+  initDealerWizard();
+  initLeadershipCarousel();
 });

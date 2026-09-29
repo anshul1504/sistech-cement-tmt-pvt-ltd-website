@@ -61,7 +61,9 @@ class ThemeSettingsAdmin(NoAddDeleteSingletonAdmin):
 class SiteSettingsAdmin(NoAddDeleteSingletonAdmin):
     fieldsets = (
         ("Company", {"fields": ("company_name", "legal_name", "tagline")}),
-        ("Branding", {"fields": ("logo_header", "logo_footer", "favicon", "default_share_image")}),
+        ("Branding", {"fields": (
+            "logo_header", "logo_header_compact", "logo_footer", "favicon", "apple_touch_icon", "default_share_image", "company_profile",
+        )}),
         ("Contact", {"fields": (
             "phone_primary", "phone_secondary", "whatsapp_number", "whatsapp_message",
             "email_contact", "email_career", "email_support",
@@ -71,7 +73,11 @@ class SiteSettingsAdmin(NoAddDeleteSingletonAdmin):
         ("Social", {"fields": (
             "social_facebook", "social_instagram", "social_linkedin", "social_youtube", "social_x", "social_indiamart",
         )}),
-        ("Footer", {"fields": ("footer_about", "copyright_text")}),
+        ("Footer", {"fields": (
+            "footer_about", "copyright_text",
+            "footer_col1_title", "footer_col2_title", "footer_col3_title",
+            "credit_prefix_text", "credit_text", "credit_url",
+        )}),
         ("Tracking & scripts (staff only)", {"fields": ("ga_id", "head_scripts", "footer_scripts")}),
         ("Maintenance & SEO", {"fields": ("maintenance_mode", "maintenance_message", "robots_txt")}),
     )

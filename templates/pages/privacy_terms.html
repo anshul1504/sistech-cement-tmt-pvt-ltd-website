@@ -1,0 +1,76 @@
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Privacy Policy & Terms of Use | SISTECH" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Read the SISTECH website privacy policy and terms of use covering information handling, website access, user responsibilities and legal conditions." }}{% endblock %}
+{% block content %}
+<section class="legal-hero" style="--legal-hero:url('{% static 'images/about/about-hero-v1.png' %}')"><div class="container legal-hero__inner"><nav class="legal-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span>/</span><span aria-current="page">Privacy Policy &amp; Terms</span></nav><span class="legal-kicker">Legal</span><h1>Privacy Policy<br>&amp; Terms of Use</h1><p>How {{ site.company_name }} handles your information and the conditions that apply when you use this website.</p><div class="legal-hero__meta"><span>Last updated: 29 September 2026</span></div></div></section>
+
+<section class="legal-body section--pad-lg"><div class="container legal-layout">
+  <aside class="legal-toc" aria-label="On this page"><div class="legal-toc__box">
+    <strong>Privacy Policy</strong>
+    <ol>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#information-we-collect">Information we collect</a></li>
+      <li><a href="#how-we-use">How we use information</a></li>
+      <li><a href="#sharing">Sharing of information</a></li>
+      <li><a href="#cookies">Cookies &amp; analytics</a></li>
+      <li><a href="#security">Security &amp; retention</a></li>
+      <li><a href="#your-choices">Your choices</a></li>
+    </ol>
+    <strong>Terms of Use</strong>
+    <ol start="8">
+      <li><a href="#use-of-website">Use of the website</a></li>
+      <li><a href="#intellectual-property">Intellectual property</a></li>
+      <li><a href="#product-information">Product information</a></li>
+      <li><a href="#third-party-links">Third-party links</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#governing-law">Governing law</a></li>
+      <li><a href="#changes">Changes to this page</a></li>
+      <li><a href="#contact-us">Contact us</a></li>
+    </ol>
+  </div></aside>
+
+  <div class="legal-content">
+    <div class="legal-group"><span class="legal-kicker">Part A</span><h2>Privacy Policy</h2></div>
+
+    <article id="introduction"><b>01</b><div><h3>Introduction</h3><p>{{ site.legal_name|default:site.company_name }} ("SISTECH", "we", "us") respects your privacy. This policy explains what personal information we collect through this website, why we collect it and how we protect it. By using the website or submitting a form, you agree to the practices described here.</p></div></article>
+
+    <article id="information-we-collect"><b>02</b><div><h3>Information we collect</h3><p>We collect only the information needed to respond to you and to run the website:</p><ul><li><strong>Contact enquiries:</strong> name, phone number, email address, city and the message you send.</li><li><strong>Dealer and distributor applications:</strong> business name, contact details, location, business experience and related details you provide.</li><li><strong>Career applications:</strong> name, contact details, qualifications, experience and the resume you upload.</li><li><strong>Technical data:</strong> browser type, device, pages visited and approximate location, collected automatically through standard server logs and cookies.</li></ul></div></article>
+
+    <article id="how-we-use"><b>03</b><div><h3>How we use information</h3><ul><li>To respond to enquiries and provide product, pricing and dealership information.</li><li>To evaluate dealer, distributor and job applications.</li><li>To improve the website, its content and our services.</li><li>To keep the website secure and prevent misuse or spam.</li><li>To meet legal, regulatory and accounting obligations.</li></ul><p>We do not sell your personal information.</p></div></article>
+
+    <article id="sharing"><b>04</b><div><h3>Sharing of information</h3><p>We share information only when necessary: with our own team and authorised representatives who handle your request, with service providers who host or support this website under confidentiality obligations, and with authorities where the law requires it.</p></div></article>
+
+    <article id="cookies"><b>05</b><div><h3>Cookies &amp; analytics</h3><p>The website uses essential cookies to work properly, for example to keep forms secure. We may also use analytics tools to understand how visitors use the site. You can block or delete cookies from your browser settings, though some features may not work as intended.</p></div></article>
+
+    <article id="security"><b>06</b><div><h3>Security &amp; retention</h3><p>We use reasonable technical and organisational measures to protect information against unauthorised access, loss or misuse. No online transmission is completely secure, so we cannot guarantee absolute security. We keep information only as long as needed for the purposes above or as required by law.</p></div></article>
+
+    <article id="your-choices"><b>07</b><div><h3>Your choices</h3><p>You may ask us to access, correct or delete the personal information you have shared, or withdraw your consent to its use, by writing to us at the address below. We will respond within a reasonable time, subject to applicable law including the Digital Personal Data Protection Act, 2023.</p></div></article>
+
+    <div class="legal-group"><span class="legal-kicker">Part B</span><h2>Terms of Use</h2></div>
+
+    <article id="use-of-website"><b>08</b><div><h3>Use of the website</h3><p>You agree to use this website only for lawful purposes. You must not attempt to gain unauthorised access, introduce harmful code, submit false or misleading information, or use the site in a way that disrupts it or affects other users.</p></div></article>
+
+    <article id="intellectual-property"><b>09</b><div><h3>Intellectual property</h3><p>The SISTECH name, logo, text, images, graphics and other content on this website belong to SISTECH or its licensors and are protected by applicable law. You may not copy, modify, distribute or use them commercially without our written permission.</p></div></article>
+
+    <article id="product-information"><b>10</b><div><h3>Product information</h3><p>Product descriptions, specifications, images and programme details are provided for general information and may change without notice. Availability, pricing and scheme terms are confirmed only through our team or authorised dealers. Nothing on this website is a binding offer.</p></div></article>
+
+    <article id="third-party-links"><b>11</b><div><h3>Third-party links</h3><p>This website may link to third-party websites such as social media pages. We do not control these sites and are not responsible for their content or privacy practices.</p></div></article>
+
+    <article id="liability"><b>12</b><div><h3>Limitation of liability</h3><p>The website is provided on an "as is" basis. To the extent permitted by law, SISTECH is not liable for any loss arising from your use of, or inability to use, the website or from reliance on its content.</p></div></article>
+
+    <article id="governing-law"><b>13</b><div><h3>Governing law</h3><p>These terms are governed by the laws of India. Courts at Indore, Madhya Pradesh have jurisdiction over any dispute arising from them.</p></div></article>
+
+    <article id="changes"><b>14</b><div><h3>Changes to this page</h3><p>We may update this policy and these terms from time to time. The "last updated" date at the top shows the latest revision. Continued use of the website means you accept the updated version.</p></div></article>
+
+    <article id="contact-us"><b>15</b><div><h3>Contact us</h3><p>For any privacy request or question about these terms, contact us:</p>
+      <ul class="legal-contact">
+        <li><strong>{{ site.legal_name|default:site.company_name }}</strong></li>
+        {% if site.address %}<li>{{ site.address|linebreaksbr }}</li>{% endif %}
+        {% if site.email_contact %}<li>Email: <a href="mailto:{{ site.email_contact }}">{{ site.email_contact }}</a></li>{% endif %}
+        {% if site.phone_primary %}<li>Phone: <a href="tel:{{ site.phone_primary }}">{{ site.phone_primary|india_phone }}</a></li>{% endif %}
+      </ul></div></article>
+  </div>
+</div></section>
+
+<section class="legal-cta"><div class="container legal-cta__inner"><div><span class="legal-kicker">Questions?</span><h2>We're Happy to Help</h2><p>Reach out to our team for any query about your information or our services.</p></div><div><a class="btn btn--accent" href="{% url 'core:contact' %}">Contact Our Team {% icon "arrow-right" %}</a></div></div></section>
+{% endblock %}

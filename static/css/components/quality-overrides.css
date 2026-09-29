@@ -1,0 +1,134 @@
+/* Final proportion and spacing refinements for the quality assurance page. */
+.quality-intro.section--pad-lg,
+.quality-lab.section--pad-lg {
+  padding-block: clamp(3rem, 4.5vw, 4.5rem);
+}
+
+.quality-dispatch.section--pad-lg {
+  padding-block: clamp(3rem, 4.5vw, 4.5rem) clamp(2.25rem, 3vw, 3rem);
+}
+
+.quality-intro__grid {
+  grid-template-columns: minmax(0, 1.6fr) minmax(180px, .4fr);
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.quality-intro__seal {
+  width: 190px;
+  height: 190px;
+  padding: 1.25rem;
+}
+
+.quality-intro__seal span {
+  width: 44px;
+  height: 44px;
+  font-size: 1.35rem;
+}
+
+.quality-intro__seal strong {
+  font-size: 1.18rem;
+  line-height: 1.05;
+}
+
+.quality-intro__seal small {
+  font-size: .72rem;
+}
+
+.quality-lab__grid {
+  grid-template-columns: minmax(300px, .68fr) minmax(0, 1.32fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.quality-dispatch__grid {
+  grid-template-columns: minmax(0, 1.32fr) minmax(300px, .68fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.quality-image-card {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(13, 45, 111, .1);
+  border-radius: 16px;
+  box-shadow: 0 18px 44px -30px rgba(5, 22, 58, .65);
+}
+
+.quality-image-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 330px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.quality-lab .quality-image-card {
+  justify-self: start;
+}
+
+.quality-dispatch .quality-image-card {
+  justify-self: end;
+}
+
+.quality-image-card figcaption {
+  right: .75rem;
+  bottom: .75rem;
+  left: .75rem;
+  padding: .8rem 1rem;
+  border-radius: 9px;
+  background: linear-gradient(100deg, rgba(5, 22, 58, .94), rgba(12, 42, 104, .86));
+}
+
+.quality-focus__grid article {
+  min-height: 225px;
+}
+
+.quality-cta {
+  margin-bottom: 0;
+}
+
+body:has(.quality-cta) .site-footer {
+  margin-top: 0;
+}
+
+@media (max-width: 799.98px) {
+  .quality-intro__seal {
+    width: 172px;
+    height: 172px;
+  }
+
+  .quality-lab .quality-image-card,
+  .quality-dispatch .quality-image-card {
+    max-width: 560px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 599.98px) {
+  .quality-intro.section--pad-lg,
+  .quality-lab.section--pad-lg,
+  .quality-dispatch.section--pad-lg {
+    padding-block: 2.75rem;
+  }
+
+  .quality-intro__seal {
+    width: 154px;
+    height: 154px;
+    padding: 1rem;
+  }
+
+  .quality-image-card {
+    max-width: 100%;
+  }
+
+  .quality-image-card img {
+    max-height: 260px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .quality-image-card figcaption {
+    padding: .9rem 1rem;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-primary-dark);
+  }
+}

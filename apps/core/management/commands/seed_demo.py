@@ -20,10 +20,10 @@ SAMPLE_TAG = "[SAMPLE CONTENT — replace before launch]"
 PAGES = [
     ("Home", "home", "home"),
     ("About Us", "about", "about"),
-    ("Board of Directors / Leadership", "leadership", "leadership"),
-    ("Products", "products", "products"),
+    ("Leadership & Board of Directors", "leadership", "leadership"),
+    ("Cement & TMT Products", "products", "products"),
     ("Manufacturing Partners", "manufacturing-partners", "manufacturing_partners"),
-    ("Distribution Network", "distribution-network", "distribution_network"),
+    ("Join Our Dealer Network", "distribution-network", "distribution_network"),
     ("Star Dealer Program", "star-dealer-program", "star_dealer_program"),
     ("Star Engineer Program", "star-engineer-program", "star_engineer_program"),
     ("Star Mason & Contractor Scheme", "star-mason-contractor-scheme", "star_mason_contractor_scheme"),
@@ -31,14 +31,39 @@ PAGES = [
     ("Quality Assurance", "quality-assurance", "quality_assurance"),
     ("Safety & Sustainability", "safety-sustainability", "safety_sustainability"),
     ("Corporate Responsibility (CSR)", "csr", "csr"),
-    ("Future Expansion / Roadmap", "roadmap", "roadmap"),
-    ("Gallery", "gallery", "gallery"),
-    ("Careers", "careers", "careers"),
-    ("Blog / News", "blog", "blog"),
-    ("FAQ", "faq", "faq"),
+    ("Our Growth Roadmap", "roadmap", "roadmap"),
+    ("Media Gallery", "gallery", "gallery"),
+    ("Careers at SISTECH", "careers", "careers"),
+    ("News & Insights", "blog", "blog"),
+    ("Frequently Asked Questions", "faq", "faq"),
     ("Contact Us", "contact", "contact"),
-    ("Privacy Policy & Terms", "privacy-terms", "privacy_terms"),
+    ("Privacy Policy & Terms of Use", "privacy-terms", "privacy_terms"),
 ]
+
+# Unique, intent-led search snippets. Titles stay within the model's 70-character
+# limit and descriptions are written to work as useful search-result summaries.
+SEO_META = {
+    "home": ("SISTECH Cement & TMT | Quality Construction Materials", "Explore SISTECH cement and TMT steel products for residential, commercial, industrial and infrastructure projects, backed by reliable supply and support."),
+    "about": ("About SISTECH | Cement & TMT Company in India", "Learn about SISTECH Cement & TMT, our mission, values, manufacturing partnerships and commitment to quality construction materials and dependable service."),
+    "leadership": ("Leadership & Board of Directors | SISTECH", "Meet the leadership and Board of Directors guiding SISTECH with transparent governance, responsible growth and a long-term commitment to customers and partners."),
+    "products": ("Cement & TMT Bars in India | SISTECH Products", "Discover SISTECH OPC, PPC and PSC cement and high-strength TMT bars for residential, commercial, industrial and infrastructure construction projects."),
+    "manufacturing_partners": ("Cement & TMT Manufacturing Partners | SISTECH", "Explore the manufacturing partner network helping SISTECH maintain product quality, dependable availability and an efficient construction-material supply chain."),
+    "distribution_network": ("Become a SISTECH Dealer | Apply for Dealership", "Apply for a SISTECH cement and TMT dealership. Share your business profile and territory details to join our growing construction-material dealer network."),
+    "star_dealer_program": ("Star Dealer Rewards Program | SISTECH", "Explore SISTECH Star Dealer eligibility, performance recognition, rewards and partner benefits designed to support and celebrate high-performing dealers."),
+    "star_engineer_program": ("Star Engineer Recognition Program | SISTECH", "Learn about the SISTECH Star Engineer Program, created to recognise engineers who promote quality construction practices and dependable building materials."),
+    "star_mason_contractor_scheme": ("Mason & Contractor Rewards Scheme | SISTECH", "Discover SISTECH recognition and reward opportunities for masons and contractors contributing to safe, reliable and high-quality construction projects."),
+    "rewards_recognition": ("Dealer & Partner Rewards and Recognition | SISTECH", "See how SISTECH recognises outstanding dealers, engineers, masons and contractors through performance-led awards, benefits and annual recognition programs."),
+    "quality_assurance": ("Cement & TMT Quality Assurance | SISTECH", "Learn how SISTECH focuses on consistent cement and TMT quality, dependable sourcing and customer confidence across its construction-material supply network."),
+    "safety_sustainability": ("Safety & Sustainability in Construction | SISTECH", "Explore SISTECH's commitment to responsible business practices, workplace safety, sustainable growth and reliable construction-material operations."),
+    "csr": ("Corporate Social Responsibility | SISTECH", "Discover SISTECH corporate social responsibility priorities and our commitment to creating value for communities alongside responsible business growth."),
+    "roadmap": ("Growth Roadmap & Expansion Strategy | SISTECH", "Explore the SISTECH business roadmap for expanding dealer reach, strengthening supply partnerships and improving customer-focused construction-material support."),
+    "gallery": ("Cement, TMT & Company Media Gallery | SISTECH", "View SISTECH cement, TMT steel, dealer network, partner events and company activity highlights in our construction-material media gallery."),
+    "careers": ("Careers at SISTECH Cement & TMT | Apply Now", "Explore career opportunities at SISTECH Cement & TMT and join a growing construction-material company focused on quality, partnerships and customer service."),
+    "blog": ("Cement, TMT & Construction News | SISTECH Insights", "Read SISTECH news and insights about cement, TMT steel, construction materials, dealer partnerships, quality practices and company updates."),
+    "faq": ("Cement, TMT & Dealership FAQs | SISTECH", "Find answers to common questions about SISTECH cement and TMT products, dealership opportunities, support, distribution and business programs."),
+    "contact": ("Contact SISTECH Cement & TMT | Sales & Support", "Contact SISTECH for cement and TMT product enquiries, project requirements, dealership information, customer support and business assistance."),
+    "privacy_terms": ("Privacy Policy & Terms of Use | SISTECH", "Read the SISTECH website privacy policy and terms of use covering information handling, website access, user responsibilities and legal conditions."),
+}
 
 # Top-level header structure: max 7 items + 1 CTA button.
 # Each top-level entry is (label, page_type_or_None, footer_column, children)
@@ -47,13 +72,13 @@ HEADER_MENU = [
     ("Home", "home", "none", []),
     ("About", None, "none", [
         ("About Us", "about", "Our story, mission and values.", "1"),
-        ("Board of Directors / Leadership", "leadership", "Meet the leadership team.", "1"),
-        ("Future Expansion / Roadmap", "roadmap", "Our growth strategy.", "1"),
+        ("Leadership & Board of Directors", "leadership", "Meet the leadership team.", "1"),
+        ("Our Growth Roadmap", "roadmap", "Our growth strategy.", "1"),
     ]),
     ("Products", "products", "2", []),
     ("Network", None, "none", [
         ("Manufacturing Partners", "manufacturing_partners", "Our cement & TMT manufacturing tie-ups.", "2"),
-        ("Distribution Network", "distribution_network", "Dealers and distributors across India.", "2"),
+        ("Join Our Dealer Network", "distribution_network", "Dealers and distributors across India.", "2"),
     ]),
     ("Programs", None, "none", [
         ("Star Dealer Program", "star_dealer_program", "Rewards for top-performing dealers.", "2"),
@@ -67,8 +92,8 @@ HEADER_MENU = [
         ("Corporate Responsibility (CSR)", "csr", "Our commitment beyond business.", "1"),
     ]),
     ("Media", None, "none", [
-        ("Gallery", "gallery", "Photos and videos.", "none"),
-        ("Blog / News", "blog", "Latest updates from SISTECH.", "none"),
+        ("Media Gallery", "gallery", "Photos and videos.", "none"),
+        ("News & Insights", "blog", "Latest updates from SISTECH.", "none"),
     ]),
     ("Careers", "careers", "none", []),
     ("Contact Us", "contact", "none", []),
@@ -78,8 +103,8 @@ HEADER_MENU = [
 # Privacy Policy & Terms lives only in the bottom legal bar (footer.html), and FAQ
 # is already in the top utility bar, so neither is repeated as a footer column link.
 FOOTER_ONLY_LINKS = [
-    ("FAQ", "faq", "none"),
-    ("Privacy Policy & Terms", "privacy_terms", "none"),
+    ("Frequently Asked Questions", "faq", "none"),
+    ("Privacy Policy & Terms of Use", "privacy_terms", "none"),
 ]
 
 HERO_SUBTITLE = {
@@ -253,8 +278,8 @@ class Command(BaseCommand):
                     slug=slug or "home",
                     hero_title=title if page_type != "home" else "",
                     hero_subtitle=HERO_SUBTITLE.get(page_type, ""),
-                    meta_title=title,
-                    meta_description=(HERO_SUBTITLE.get(page_type) or title)[:170],
+                    meta_title=SEO_META[page_type][0],
+                    meta_description=SEO_META[page_type][1],
                 ),
             )
             page_by_type[page_type] = page
@@ -277,7 +302,7 @@ class Command(BaseCommand):
             return
         site.legal_name = "SISTECH Cement & TMT Private Limited"
         site.address = "Ho. No. 186/C, Scheme No. 134, Near Advance Academy, Indore, Madhya Pradesh"
-        site.phone_primary = "8319416402"
+        site.phone_primary = "+918319416402"
         site.whatsapp_number = "918319416402"
         site.email_contact = "sistechcement@gmail.com"
         site.gst_number = "23ABICS4693M1ZQ"
@@ -297,6 +322,11 @@ class Command(BaseCommand):
             if src.exists():
                 with open(src, "rb") as f:
                     getattr(site, field_name).save(save_as, File(f), save=False)
+
+        profile = SEED_ASSETS_DIR / "company_profile.pdf"
+        if profile.exists():
+            with open(profile, "rb") as f:
+                site.company_profile.save("sistech-company-profile.pdf", File(f), save=False)
 
         site.save()
         self.stdout.write("Seeded Site Settings with real company details and logo assets.")

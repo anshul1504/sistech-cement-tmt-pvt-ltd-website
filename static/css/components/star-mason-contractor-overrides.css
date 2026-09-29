@@ -1,0 +1,17 @@
+.smc-reward__icon {
+  width: 56px;
+  height: 56px;
+  font-size: 0;
+}
+
+.smc-reward__icon .icon {
+  width: 29px;
+  height: 29px;
+  stroke-width: 1.8;
+}
+
+.smc-rewards article:nth-child(even) .smc-reward__icon {
+  color: var(--color-accent);
+  background: rgba(255, 255, 255, .09);
+  border: 1px solid rgba(242, 183, 5, .45);
+}

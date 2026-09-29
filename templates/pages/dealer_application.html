@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static core_extras %}
+
+{% block title %}{{ page.meta_title|default:"Become a SISTECH Dealer | Apply for Dealership" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Apply for a SISTECH cement and TMT dealership. Share your business profile and territory details to join our growing construction-material dealer network." }}{% endblock %}
+
+{% block content %}
+<section class="dealer-hero" style="--dealer-hero-image: url('{% static 'images/dealer/dealer-hero-sistech.png' %}');">
+  <div class="container dealer-hero__inner">
+    <div class="dealer-hero__copy">
+      <nav class="dealer-breadcrumb" aria-label="Breadcrumb">
+        <a href="{% url 'core:home' %}">Home</a><span>/</span><span aria-current="page">Join as a Dealer</span>
+      </nav>
+      <span class="dealer-kicker">SISTECH Dealer Network</span>
+      <h1>Build a Stronger Business With Us</h1>
+      <p>Partner with SISTECH Cement & TMT and serve your market with dependable products, responsive support and a growth-focused relationship.</p>
+      <a class="btn btn--accent" href="#dealer-application">Apply for Dealership {% icon "arrow-right" %}</a>
+    </div>
+  </div>
+</section>
+
+<section class="dealer-benefits section--pad-lg">
+  <div class="container">
+    <div class="dealer-section-heading align-center">
+      <span class="dealer-kicker">Partner advantage</span>
+      <h2>Everything You Need to Grow</h2>
+      <p>Our dealer partnership is designed around dependable service, stronger market presence and shared success.</p>
+    </div>
+    <div class="dealer-benefit-grid">
+      <article><span class="dealer-benefit-grid__number">01</span><h3>Trusted Product Range</h3><p>Offer customers quality-focused cement and TMT solutions for diverse construction needs.</p></article>
+      <article><span class="dealer-benefit-grid__number">02</span><h3>Sales Support</h3><p>Get responsive coordination and business support from the SISTECH team.</p></article>
+      <article><span class="dealer-benefit-grid__number">03</span><h3>Market Growth</h3><p>Build visibility and reach through a growing distribution network and partner ecosystem.</p></article>
+      <article><span class="dealer-benefit-grid__number">04</span><h3>Dealer Recognition</h3><p>Unlock recognition and rewards through performance-led dealer programs.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="dealer-process">
+  <div class="container">
+    <div class="dealer-section-heading">
+      <span class="dealer-kicker">Simple process</span>
+      <h2>How the Application Works</h2>
+    </div>
+    <ol class="dealer-process__steps">
+      <li><span>1</span><div><strong>Submit application</strong><p>Share your contact, business and territory details.</p></div></li>
+      <li><span>2</span><div><strong>Business review</strong><p>Our team evaluates market potential and basic eligibility.</p></div></li>
+      <li><span>3</span><div><strong>Discussion</strong><p>A representative contacts you to understand the opportunity.</p></div></li>
+      <li><span>4</span><div><strong>Onboarding</strong><p>Eligible partners complete verification and dealership formalities.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="dealer-application-section section--pad-lg" id="dealer-application">
+  <div class="container dealer-application-layout">
+    <aside class="dealer-requirements">
+      <span class="dealer-kicker">Before you apply</span>
+      <h2>Basic Requirements</h2>
+      <p>Keep these business details ready. Final approval remains subject to territory availability and company verification.</p>
+      <ul>
+        <li><span>✓</span> Valid identity and address details</li>
+        <li><span>✓</span> Business or proposed firm information</li>
+        <li><span>✓</span> Suitable shop, office or storage plan</li>
+        <li><span>✓</span> Investment capacity for the selected market</li>
+        <li><span>✓</span> GST registration, where applicable</li>
+      </ul>
+      <div class="dealer-help">
+        <small>Need help with the application?</small>
+        {% if site.phone_primary %}<a href="tel:{{ site.phone_primary }}">{% icon "phone" %} {{ site.phone_primary|india_phone }}</a>{% endif %}
+        {% if site.email_contact %}<a href="mailto:{{ site.email_contact }}">{% icon "mail" %} {{ site.email_contact }}</a>{% endif %}
+      </div>
+    </aside>
+
+    <div class="dealer-form-card">
+      {% if submitted %}
+      <div class="dealer-success" role="status">
+        <span class="dealer-success__check">✓</span>
+        <span class="dealer-kicker">Application received</span>
+        <h2>Thank You for Your Interest</h2>
+        <p>Our dealer development team will review your details and contact you if the territory and business profile are suitable.</p>
+        {% if application_number %}<div class="dealer-success__reference"><small>Application reference</small><strong>{{ application_number }}</strong></div>{% endif %}
+        <div class="dealer-success__next">
+          <div><span>1</span><p><strong>Profile review</strong>Your application enters our review queue.</p></div>
+          <div><span>2</span><p><strong>Team callback</strong>Shortlisted applicants are contacted directly.</p></div>
+          <div><span>3</span><p><strong>Verification</strong>Territory and business details are verified.</p></div>
+        </div>
+        <a class="btn btn--primary" href="{% url 'core:distribution_network' %}">Submit another application</a>
+      </div>
+      {% else %}
+      <div class="dealer-form-card__heading">
+        <span class="dealer-kicker">Dealership application</span>
+        <h2>Tell Us About Your Business</h2>
+        <p>Complete all required fields marked with <b>*</b>.</p>
+      </div>
+      <div class="dealer-form-trust" aria-label="Application information">
+        <span>✓ No application fee</span>
+        <span>✓ Secure submission</span>
+        <span>✓ Direct team review</span>
+      </div>
+      <form method="post" class="dealer-form" data-dealer-wizard novalidate>
+        {% csrf_token %}
+        {{ form.website }}
+        {% if form.non_field_errors %}<div class="dealer-form__alert">{{ form.non_field_errors }}</div>{% endif %}
+
+        <fieldset>
+          <legend><span>1</span> Contact details</legend>
+          <div class="dealer-form__grid">
+            {% include "forms/dealer_field.html" with field=form.name %}
+            {% include "forms/dealer_field.html" with field=form.phone %}
+            {% include "forms/dealer_field.html" with field=form.email %}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span>2</span> Business profile</legend>
+          <div class="dealer-form__grid">
+            {% include "forms/dealer_field.html" with field=form.business_name %}
+            {% include "forms/dealer_field.html" with field=form.business_type %}
+            {% include "forms/dealer_field.html" with field=form.years_in_business %}
+            {% include "forms/dealer_field.html" with field=form.gst_number %}
+            {% include "forms/dealer_field.html" with field=form.product_interest %}
+            {% include "forms/dealer_field.html" with field=form.investment_range %}
+            {% include "forms/dealer_field.html" with field=form.existing_brands wide=True %}
+            <div class="dealer-form__checks">
+              {% include "forms/dealer_checkbox.html" with field=form.has_shop %}
+              {% include "forms/dealer_checkbox.html" with field=form.has_warehouse %}
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span>3</span> Proposed territory</legend>
+          <div class="dealer-form__grid">
+            {% include "forms/dealer_field.html" with field=form.address wide=True %}
+            {% include "forms/dealer_field.html" with field=form.city %}
+            {% include "forms/dealer_field.html" with field=form.district %}
+            {% include "forms/dealer_field.html" with field=form.state %}
+            {% include "forms/dealer_field.html" with field=form.pincode %}
+            {% include "forms/dealer_field.html" with field=form.message wide=True %}
+          </div>
+        </fieldset>
+
+        <div class="dealer-form__consent">
+          {{ form.consent }}
+          <label for="{{ form.consent.id_for_label }}">{{ form.consent.label }}</label>
+          {% for error in form.consent.errors %}<span class="error-text">{{ error }}</span>{% endfor %}
+        </div>
+        <button class="btn btn--accent dealer-form__submit" type="submit">Submit Application {% icon "arrow-right" %}</button>
+        <p class="dealer-form__note">Submitting an application does not guarantee appointment as a dealer. Approval is subject to verification and company policy.</p>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="dealer-faq section--pad-lg" id="dealer-faq">
+  <div class="container">
+    <div class="dealer-faq__layout">
+      <div class="dealer-faq__visual">
+        <img src="{% static 'images/dealer/dealer-faq-consultation.png' %}" alt="Building materials dealer discussing partnership details with a representative" loading="lazy">
+        <div class="dealer-faq__badge"><strong>Partner Support</strong><span>From application to onboarding</span></div>
+      </div>
+      <div class="dealer-faq__content">
+        <div class="dealer-section-heading">
+          <span class="dealer-kicker">Common questions</span>
+          <h2>Dealership FAQs</h2>
+          <p>Quick answers before you submit your application.</p>
+        </div>
+        <div class="dealer-faq__list">
+          <details>
+            <summary>Who can apply for a SISTECH dealership?<span>+</span></summary>
+            <p>Existing building-material retailers, wholesalers, distributors, contractors and serious new entrepreneurs may apply. Selection depends on business suitability and territory availability.</p>
+          </details>
+          <details>
+            <summary>Is GST registration mandatory?<span>+</span></summary>
+            <p>You may submit the initial application without a GST number. Required registrations and documents will be confirmed during verification based on the proposed business structure.</p>
+          </details>
+          <details>
+            <summary>How much investment is required?<span>+</span></summary>
+            <p>Investment varies by territory, product category and expected market scale. Select your indicative range in the form and our team will discuss the suitable model with you.</p>
+          </details>
+          <details>
+            <summary>How long does the review take?<span>+</span></summary>
+            <p>The team first checks territory availability and the applicant’s business profile. Shortlisted applicants are contacted directly for the next-stage discussion and verification.</p>
+          </details>
+          <details>
+            <summary>Does submitting the form guarantee a dealership?<span>+</span></summary>
+            <p>No. Submission records your interest. Appointment is subject to internal review, document verification, market potential, territory availability and company policy.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

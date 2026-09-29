@@ -1,0 +1,5 @@
+<div class="dealer-form__field{% if wide %} dealer-form__field--wide{% endif %}">
+  <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span>*</span>{% endif %}</label>
+  {% if field.name == "phone" %}<div class="phone-field"><span>+91</span>{{ field }}</div>{% else %}{{ field }}{% endif %}
+  {% for error in field.errors %}<small class="error-text">{{ error }}</small>{% endfor %}
+</div>

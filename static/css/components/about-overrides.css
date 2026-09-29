@@ -1,0 +1,21 @@
+/* Compact media treatment for the About page. */
+.about-hero {
+  min-height: clamp(430px, 34vw, 540px);
+}
+
+.about-story__visual img {
+  height: clamp(320px, 28vw, 430px);
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 699.98px) {
+  .about-hero {
+    min-height: 470px;
+  }
+
+  .about-story__visual img {
+    height: 280px;
+  }
+}

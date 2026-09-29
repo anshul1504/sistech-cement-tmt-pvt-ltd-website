@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Annual Rewards & Recognition | SISTECH" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Explore SISTECH annual rewards and recognition for high-performing dealers, engineers, masons and contractors, including grand recognition benefits." }}{% endblock %}
+{% block content %}
+<section class="rr-hero" style="--rr-hero:url('{% static 'images/rewards/annual-recognition-hero.png' %}')"><div class="container rr-hero__inner">
+  <nav class="rr-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span>/</span><span aria-current="page">Rewards &amp; Recognition</span></nav>
+  <span class="rr-kicker">Celebrating excellence</span><h1>Annual Rewards<br>&amp; Recognition</h1><p>Every year, SISTECH organises a special recognition programme to honour its highest-performing business partners.</p>
+  <div class="rr-hero__actions"><a class="btn btn--accent" href="#award-categories">Explore Award Categories {% icon "arrow-right" %}</a><span><strong>Performance recognised</strong><small>Partnerships celebrated</small></span></div>
+  <div class="rr-hero__stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+</div></section>
+
+<section class="rr-categories section--pad-lg" id="award-categories"><div class="container"><header class="rr-heading"><span class="rr-kicker">Award categories</span><h2>Recognising Every Partner in Progress</h2><p>Our annual programme celebrates excellence across the people and professional communities that contribute to stronger construction outcomes.</p></header><div class="rr-categories__grid">
+  <article><div class="rr-category__icon">{% icon "store" %}</div><span>Category 01</span><h3>Star Dealer</h3><p>Recognising high-performing dealers for market contribution, customer commitment and trusted partnership.</p><a href="{% url 'core:star_dealer_program' %}">Explore programme {% icon "arrow-right" %}</a></article>
+  <article><div class="rr-category__icon">{% icon "engineer" %}</div><span>Category 02</span><h3>Star Engineer</h3><p>Celebrating engineering professionals whose knowledge and guidance support better construction practices.</p><a href="{% url 'core:star_engineer_program' %}">Explore programme {% icon "arrow-right" %}</a></article>
+  <article><div class="rr-category__icon">{% icon "mason" %}</div><span>Category 03</span><h3>Star Mason</h3><p>Honouring skilled masons whose workmanship and dedication help transform materials into lasting structures.</p><a href="{% url 'core:star_mason_contractor_scheme' %}">Explore programme {% icon "arrow-right" %}</a></article>
+  <article><div class="rr-category__icon">{% icon "contractor" %}</div><span>Category 04</span><h3>Star Contractor</h3><p>Recognising contractors for capable execution, responsible site practices and dependable project delivery.</p><a href="{% url 'core:star_mason_contractor_scheme' %}">Explore programme {% icon "arrow-right" %}</a></article>
+</div></div></section>
+
+<section class="rr-recognition section--pad-lg"><div class="container rr-recognition__grid"><div class="rr-recognition__intro"><span class="rr-kicker">Grand recognition</span><h2>An Experience That Celebrates Achievement</h2><p>Outstanding performance is acknowledged through a thoughtfully designed recognition experience that combines travel, hospitality, celebration and formal appreciation.</p><div class="rr-trophy" aria-hidden="true"><span>★</span><strong>Excellence</strong><small>Recognition Programme</small></div></div><ol class="rr-benefits">
+  <li><span>01</span><div><strong>International Couple Tour</strong><p>A memorable travel experience designed to celebrate exceptional achievement.</p></div></li>
+  <li><span>02</span><div><strong>Luxury Accommodation</strong><p>Premium hospitality as part of the grand recognition experience.</p></div></li>
+  <li><span>03</span><div><strong>Award Ceremony</strong><p>A dedicated annual platform celebrating outstanding business partners.</p></div></li>
+  <li><span>04</span><div><strong>Trophy &amp; Certificate</strong><p>Formal recognition of performance, contribution and partnership.</p></div></li>
+  <li><span>05</span><div><strong>Management Recognition</strong><p>Special appreciation from SISTECH management for notable achievement.</p></div></li>
+</ol></div></section>
+
+<section class="rr-journey section--pad-lg"><div class="container"><header class="rr-heading rr-heading--light"><span class="rr-kicker">The recognition journey</span><h2>Performance to Celebration</h2><p>A clear annual rhythm keeps recognition focused on contribution and partnership.</p></header><ol class="rr-journey__steps"><li><span>01</span><strong>Perform</strong><p>Demonstrate consistent contribution and professional commitment.</p></li><li><span>02</span><strong>Evaluate</strong><p>Performance is reviewed against the relevant programme framework.</p></li><li><span>03</span><strong>Recognise</strong><p>Outstanding partners receive formal acknowledgement.</p></li><li><span>04</span><strong>Celebrate</strong><p>Achievements are honoured through the annual recognition programme.</p></li></ol></div></section>
+
+<section class="rr-note section--pad-lg"><div class="container rr-note__inner"><div><span class="rr-kicker">Programme information</span><h2>Recognition Built on Partnership</h2><p>Specific eligibility, performance evaluation, programme schedules and benefits may vary by category and programme period. Connect with the SISTECH team for current details applicable to you.</p><blockquote>“Success is built through strong partnerships. At SISTECH, we celebrate the people who build our success.”</blockquote></div><aside><span>Important</span><p>Final recognition remains subject to applicable programme terms, performance review and company approval.</p></aside></div></section>
+
+<section class="rr-cta"><div class="container rr-cta__inner"><div><span class="rr-kicker">Grow with SISTECH</span><h2>Ready to Build a Rewarding Partnership?</h2><p>Join our network and discover programmes designed to recognise contribution, capability and long-term growth.</p></div><div><a class="btn btn--accent" href="{% url 'core:distribution_network' %}">Join as a Dealer {% icon "arrow-right" %}</a><a href="{% url 'core:contact' %}">Contact Our Team</a></div></div></section>
+{% endblock %}

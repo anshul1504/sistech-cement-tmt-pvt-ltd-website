@@ -18,6 +18,9 @@
         {% if site.social_x %}<a href="{{ site.social_x }}" target="_blank" rel="noopener" aria-label="X">{% icon "x" %}</a>{% endif %}
         {% if site.social_indiamart %}<a href="{{ site.social_indiamart }}" target="_blank" rel="noopener" aria-label="IndiaMART">{% icon "indiamart" %}</a>{% endif %}
       </div>
+      {% if site.company_profile %}
+        <a href="{{ site.company_profile.url }}" class="footer__profile-btn" download="SISTECH-Company-Profile.pdf" target="_blank" rel="noopener">{% icon "download" %}Download Company Profile</a>
+      {% endif %}
     </div>
 
     {% if footer_columns.1 %}
@@ -46,11 +49,10 @@
         <li class="footer__contact-line">
           {% icon "map-pin" %}
           <span>{{ site.address|linebreaksbr }}
-            <a class="footer__directions" href="https://www.openstreetmap.org/?mlat={{ site.map_lat }}&mlon={{ site.map_lng }}#map={{ site.map_zoom }}/{{ site.map_lat }}/{{ site.map_lng }}" target="_blank" rel="noopener">Get Directions</a>
           </span>
         </li>
         {% endif %}
-        {% if site.phone_primary %}<li class="footer__contact-line"><a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary }}</a></li>{% endif %}
+        {% if site.phone_primary %}<li class="footer__contact-line"><a href="tel:{{ site.phone_primary }}">{% icon "phone" %}{{ site.phone_primary|india_phone }}</a></li>{% endif %}
         {% if site.email_contact %}<li class="footer__contact-line"><a href="mailto:{{ site.email_contact }}">{% icon "mail" %}{{ site.email_contact }}</a></li>{% endif %}
         {% if site.email_career %}<li class="footer__contact-line"><a href="mailto:{{ site.email_career }}">{% icon "mail" %}{{ site.email_career }} (Careers)</a></li>{% endif %}
         {% if site.email_support %}<li class="footer__contact-line"><a href="mailto:{{ site.email_support }}">{% icon "mail" %}{{ site.email_support }} (Support)</a></li>{% endif %}
@@ -63,9 +65,12 @@
   <div class="container footer__bottom">
     <p>{{ site.copyright_text }}</p>
     <div class="footer__bottom-links">
-      <a href="/privacy-terms/">Privacy Policy & Terms</a>
+      <a href="{% url 'core:privacy_terms' %}">Privacy Policy & Terms</a>
       {% if site.credit_text %}
-        {% if site.credit_url %}<a href="{{ site.credit_url }}" target="_blank" rel="noopener">{{ site.credit_text }}</a>{% else %}<span>{{ site.credit_text }}</span>{% endif %}
+        <span class="footer__credit">
+          {{ site.credit_prefix_text }}
+          {% if site.credit_url %}<a href="{{ site.credit_url }}" target="_blank" rel="noopener">{{ site.credit_text }}</a>{% else %}{{ site.credit_text }}{% endif %}
+        </span>
       {% endif %}
     </div>
   </div>

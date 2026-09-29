@@ -31,6 +31,18 @@ def radius_value(value):
     return RADIUS_VALUES.get(value, RADIUS_VALUES["soft"])
 
 
+@register.filter
+def india_phone(value):
+    """Display Indian phone numbers consistently with the +91 country code."""
+    raw = str(value or "").strip()
+    digits = "".join(character for character in raw if character.isdigit())
+    if len(digits) == 10:
+        return f"+91 {digits}"
+    if len(digits) == 12 and digits.startswith("91"):
+        return f"+91 {digits[2:]}"
+    return raw
+
+
 @register.simple_tag
 def render_section(section):
     """Returns the template path for a given PageSection type."""

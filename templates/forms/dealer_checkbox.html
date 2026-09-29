@@ -1,0 +1,4 @@
+<label class="dealer-form__check" for="{{ field.id_for_label }}">
+  {{ field }} <span>{{ field.label }}</span>
+</label>
+{% for error in field.errors %}<small class="error-text">{{ error }}</small>{% endfor %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}{% load static core_extras %}
+{% block title %}{{ page.meta_title|default:"Star Mason & Contractor Scheme | SISTECH" }}{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:"Explore SISTECH's Star Mason and Star Contractor Scheme, including eligibility, annual recognition and rewards for skilled construction professionals." }}{% endblock %}
+{% block content %}
+<section class="smc-hero" style="--smc-hero:url('{% static 'images/programs/star-mason-contractor-hero.png' %}')"><div class="container smc-hero__inner">
+  <nav class="smc-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'core:home' %}">Home</a><span>/</span><span>Programs</span><span>/</span><span aria-current="page">Star Mason &amp; Contractor Scheme</span></nav>
+  <span class="smc-kicker">Building excellence together</span><h1>Star Mason &amp;<br>Contractor Scheme</h1><p>Masons and contractors are the backbone of every successful construction project. SISTECH recognises the skilled professionals who turn quality materials into strong, lasting structures.</p>
+  <div class="smc-hero__actions"><a class="btn btn--accent" href="#scheme-details">Explore the Scheme {% icon "arrow-right" %}</a><span><strong>Skill recognised</strong><small>Performance celebrated</small></span></div>
+</div></section>
+
+<section class="smc-intro section--pad-lg" id="scheme-details"><div class="container smc-intro__grid"><div><span class="smc-kicker">Programme purpose</span><h2>Recognising the People Behind Stronger Structures</h2><p>The scheme celebrates the contribution of registered masons and contractors whose workmanship, performance and consistent professional practices support dependable construction outcomes.</p><blockquote>Recognition is not only about results—it is about the skill, discipline and partnership behind every result.</blockquote></div><aside class="smc-intro__panel"><span>Our promise</span><strong>Recognise skill.<br>Celebrate contribution.<br>Grow together.</strong><small>Subject to applicable programme terms and review.</small></aside></div></section>
+
+<section class="smc-eligibility section--pad-lg"><div class="container smc-eligibility__grid"><div class="smc-section-heading"><span class="smc-kicker">Eligibility</span><h2>Who Can Be Considered?</h2><p>The brochure identifies four key eligibility considerations for the annual scheme.</p><div class="smc-eligibility__note"><strong>Important</strong><span>Final eligibility and selection remain subject to programme rules, performance verification and company approval.</span></div></div><ol class="smc-checklist">
+  <li><span>01</span><div><strong>Registered Mason or Contractor</strong><p>Participation is intended for registered professionals associated with the applicable programme.</p></div></li>
+  <li><span>02</span><div><strong>Annual Performance</strong><p>Recognition considers performance across the relevant annual programme period.</p></div></li>
+  <li><span>03</span><div><strong>Consistent Use of SISTECH Products</strong><p>Consistent product association forms part of the programme consideration.</p></div></li>
+  <li><span>04</span><div><strong>Compliance With Company Policies</strong><p>Participants are expected to follow applicable programme and company policies.</p></div></li>
+</ol></div></section>
+
+<section class="smc-rewards section--pad-lg"><div class="container"><header class="smc-heading smc-heading--light"><span class="smc-kicker">Recognition</span><h2>Performance Deserves a Meaningful Celebration</h2><p>Eligible high-performing professionals may be recognised through experiences and formal awards described in the programme.</p></header><div class="smc-rewards__grid">
+  <article><span>01</span><div class="smc-reward__icon">{% icon "plane" %}</div><h3>Domestic Couple Trip</h3><p>A memorable domestic travel experience celebrating achievement together.</p></article>
+  <article><span>02</span><div class="smc-reward__icon">{% icon "globe" %}</div><h3>International Couple Trip</h3><p>An international travel experience for qualifying programme recognition.</p></article>
+  <article><span>03</span><div class="smc-reward__icon">{% icon "trophy" %}</div><h3>Annual Champion Awards</h3><p>A dedicated annual platform honouring exceptional programme performance.</p></article>
+  <article><span>04</span><div class="smc-reward__icon">{% icon "certificate" %}</div><h3>Trophy &amp; Certificate</h3><p>Formal recognition celebrating professional excellence and contribution.</p></article>
+</div></div></section>
+
+<section class="smc-process section--pad-lg"><div class="container"><header class="smc-heading"><span class="smc-kicker">Recognition journey</span><h2>From Participation to Celebration</h2><p>A transparent annual journey keeps the programme focused on professional contribution.</p></header><ol class="smc-process__steps"><li><span>01</span><strong>Register</strong><p>Join the relevant scheme through the applicable channel.</p></li><li><span>02</span><strong>Participate</strong><p>Stay engaged and follow programme requirements.</p></li><li><span>03</span><strong>Perform</strong><p>Demonstrate consistent annual performance and compliance.</p></li><li><span>04</span><strong>Review</strong><p>Programme performance is verified under applicable criteria.</p></li><li><span>05</span><strong>Recognise</strong><p>Qualifying professionals are celebrated through annual recognition.</p></li></ol></div></section>
+
+<section class="smc-cta"><div class="container smc-cta__inner"><div><span class="smc-kicker">Build your journey</span><h2>Interested in the Star Scheme?</h2><p>Connect with the SISTECH team for current registration, eligibility, programme-period and recognition details.</p></div><div><a class="btn btn--accent" href="{% url 'core:contact' %}">Enquire About the Scheme {% icon "arrow-right" %}</a><a href="tel:{{ site.phone_primary|cut:' ' }}">{{ site.phone_primary|india_phone }}</a></div></div></section>
+{% endblock %}

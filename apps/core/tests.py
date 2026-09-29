@@ -5,6 +5,7 @@ from django.core.management import call_command
 from django.test import Client, RequestFactory, TestCase
 from django.test.utils import CaptureQueriesContext
 from django.db import connection
+from django.urls import reverse
 
 from apps.core.context_processors import site_and_theme
 from apps.core.models import MenuItem, Page
@@ -75,7 +76,7 @@ class MenuIsActiveTagTests(SeedDataMixin, TestCase):
 
 class SiteCrawlTests(SeedDataMixin, TestCase):
     """Crawls every header/footer link and asserts it resolves to a real page,
-    and that all 20 published pages are reachable from header or footer."""
+    and that all published navigation pages are reachable from the home page."""
 
     def test_every_page_reachable_and_returns_200(self):
         client = Client()
@@ -90,5 +91,107 @@ class SiteCrawlTests(SeedDataMixin, TestCase):
                 resp = client.get(link)
                 self.assertIn(resp.status_code, (200, 302), f"{link} returned {resp.status_code}")
 
-        expected_paths = {p.get_absolute_url() for p in Page.objects.filter(is_published=True)} - {"/"}
+        # FAQ is intentionally not present in the global navigation/top bar.
+        expected_paths = {p.get_absolute_url() for p in Page.objects.filter(is_published=True)} - {"/", "/faq/"}
         self.assertTrue(expected_paths.issubset(links), expected_paths - links)
+
+    def test_every_page_has_unique_search_metadata(self):
+        pages = list(Page.objects.filter(is_published=True))
+        titles = [page.meta_title for page in pages]
+        self.assertTrue(all(titles))
+        self.assertEqual(len(titles), len(set(titles)))
+        self.assertTrue(all(len(title) <= 70 for title in titles))
+        self.assertTrue(all(80 <= len(page.meta_description) <= 170 for page in pages))
+
+
+class QualityAssurancePageTests(SeedDataMixin, TestCase):
+    def test_dedicated_quality_page_renders_complete_system(self):
+        response = self.client.get(reverse("core:quality_assurance"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/quality_assurance.html")
+        self.assertContains(response, "How We Approach Quality")
+        self.assertContains(response, "From Source to Site")
+        self.assertContains(response, "Reliable Packaging & Dispatch")
+
+
+class SafetySustainabilityPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_safety_page_renders_complete_framework(self):
+        response = self.client.get(reverse("core:safety_sustainability"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/safety_sustainability.html")
+        self.assertContains(response, "Our Safety &amp; Sustainability Framework", html=True)
+        self.assertContains(response, "Practical Controls Across Operations")
+        self.assertContains(response, "A Simple Improvement Cycle")
+
+
+class CorporateResponsibilityPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_csr_page_renders_complete_framework(self):
+        response = self.client.get(reverse("core:csr"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/csr.html")
+        self.assertContains(response, "Where We Aim to Make a Difference")
+        self.assertContains(response, "Knowledge Creates Lasting Impact")
+        self.assertContains(response, "Responsibility Through Relationships")
+
+
+class RewardsRecognitionPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_rewards_page_uses_brochure_programme_content(self):
+        response = self.client.get(reverse("core:rewards_recognition"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/rewards_recognition.html")
+        self.assertContains(response, "Star Dealer")
+        self.assertContains(response, "International Couple Tour")
+        self.assertContains(response, "Special appreciation from SISTECH management")
+
+
+class StarMasonContractorSchemePageTests(SeedDataMixin, TestCase):
+    def test_dedicated_scheme_page_uses_brochure_content(self):
+        response = self.client.get(reverse("core:star_mason_contractor_scheme"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/star_mason_contractor_scheme.html")
+        self.assertContains(response, "Registered Mason or Contractor")
+        self.assertContains(response, "Domestic Couple Trip")
+        self.assertContains(response, "Annual Champion Awards")
+
+
+class StarEngineerProgramPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_engineer_page_uses_brochure_content(self):
+        response = self.client.get(reverse("core:star_engineer_program"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/star_engineer_program.html")
+        self.assertContains(response, "Registered Engineers")
+        self.assertContains(response, "International Couple Trip")
+        self.assertContains(response, "Annual Awards Ceremony")
+
+
+class StarDealerProgramPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_dealer_program_uses_brochure_content(self):
+        response = self.client.get(reverse("core:star_dealer_program"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/star_dealer_program.html")
+        self.assertContains(response, "Registered SISTECH Dealers")
+        self.assertContains(response, "Domestic Couple Trip")
+        self.assertContains(response, "Grand Champion Award")
+
+
+class ManufacturingPartnersPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_manufacturing_page_uses_brochure_network(self):
+        response = self.client.get(reverse("core:manufacturing_partners"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/manufacturing_partners.html")
+        self.assertContains(response, "Abhiraj Cement")
+        self.assertContains(response, "Pioneer Industries")
+        self.assertContains(response, "300,000 TPA")
+
+
+class ProductsPageTests(SeedDataMixin, TestCase):
+    def test_dedicated_products_page_uses_brochure_portfolio(self):
+        response = self.client.get(reverse("core:products"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "pages/products.html")
+        self.assertContains(response, "Ordinary Portland Cement")
+        self.assertContains(response, "Portland Pozzolana Cement")
+        self.assertContains(response, "Uniform Rib Design")
+        self.assertContains(response, "How to Identify Quality TMT Bars")
+        self.assertContains(response, "Certification &amp; Traceability", html=True)
+        self.assertContains(response, "SISTECH TMT 550D")

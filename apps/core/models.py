@@ -106,6 +106,10 @@ class SiteSettings(SingletonModel):
     favicon = models.ImageField(upload_to="site/", blank=True, null=True)
     apple_touch_icon = models.ImageField(upload_to="site/", blank=True, null=True)
     default_share_image = models.ImageField(upload_to="site/", blank=True, null=True)
+    company_profile = models.FileField(
+        upload_to="site/", blank=True, null=True,
+        help_text="Company profile PDF. Shows a Download Company Profile button in the footer.",
+    )
 
     phone_primary = models.CharField(max_length=20, blank=True)
     phone_secondary = models.CharField(max_length=20, blank=True)
@@ -128,7 +132,14 @@ class SiteSettings(SingletonModel):
     footer_col1_title = models.CharField(max_length=50, blank=True, default="Company")
     footer_col2_title = models.CharField(max_length=50, blank=True, default="Products & Programs")
     footer_col3_title = models.CharField(max_length=50, blank=True, default="Contact")
-    credit_text = models.CharField(max_length=100, blank=True, default="Designed & Developed by The Webfix")
+    credit_prefix_text = models.CharField(
+        max_length=100, blank=True, default="Designed & Developed by",
+        help_text="Plain, non-clickable text shown before the credit link, e.g. 'Designed & Developed by'.",
+    )
+    credit_text = models.CharField(
+        max_length=100, blank=True, default="The Webfix",
+        help_text="Only this part is a clickable link, e.g. 'The Webfix'.",
+    )
     credit_url = models.URLField(blank=True, default="https://thewebfix.in")
 
     social_facebook = models.URLField(blank=True)
@@ -218,10 +229,10 @@ class MenuItem(models.Model):
 PAGE_TYPE_CHOICES = [
     ("home", "Home"),
     ("about", "About Us"),
-    ("leadership", "Board of Directors / Leadership"),
-    ("products", "Products"),
+    ("leadership", "Leadership & Board of Directors"),
+    ("products", "Cement & TMT Products"),
     ("manufacturing_partners", "Manufacturing Partners"),
-    ("distribution_network", "Distribution Network"),
+    ("distribution_network", "Join Our Dealer Network"),
     ("star_dealer_program", "Star Dealer Program"),
     ("star_engineer_program", "Star Engineer Program"),
     ("star_mason_contractor_scheme", "Star Mason & Contractor Scheme"),
@@ -229,13 +240,13 @@ PAGE_TYPE_CHOICES = [
     ("quality_assurance", "Quality Assurance"),
     ("safety_sustainability", "Safety & Sustainability"),
     ("csr", "Corporate Responsibility (CSR)"),
-    ("roadmap", "Future Expansion / Roadmap"),
-    ("gallery", "Gallery"),
-    ("careers", "Careers"),
-    ("blog", "Blog / News"),
-    ("faq", "FAQ"),
+    ("roadmap", "Our Growth Roadmap"),
+    ("gallery", "Media Gallery"),
+    ("careers", "Careers at SISTECH"),
+    ("blog", "News & Insights"),
+    ("faq", "Frequently Asked Questions"),
     ("contact", "Contact Us"),
-    ("privacy_terms", "Privacy Policy & Terms"),
+    ("privacy_terms", "Privacy Policy & Terms of Use"),
 ]
 
 PAGE_SLUG_MAP = {

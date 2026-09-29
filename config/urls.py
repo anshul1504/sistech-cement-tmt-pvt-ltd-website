@@ -9,6 +9,9 @@ urlpatterns = [
     path(settings.ADMIN_URL_PATH, admin.site.urls),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
     path("robots.txt", robots_txt, name="robots_txt"),
+    path("careers/", include("apps.careers.urls")),
+    path("gallery/", include("apps.media_center.urls")),
+    path("blog/", include("apps.media_center.blog_urls")),
     path("", include("apps.core.urls")),
 ]
 

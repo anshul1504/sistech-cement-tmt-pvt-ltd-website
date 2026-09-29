@@ -52,8 +52,15 @@ body:not(.has-dark-footer) .site-footer { background: var(--color-alt-background
   border-radius: 2px;
 }
 .footer__col ul { display: grid; gap: 0.7rem; }
-.footer__col a { opacity: 0.85; }
-.footer__col a:hover { opacity: 1; text-decoration: underline; }
+.footer__col a {
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.footer__col a:hover {
+  color: var(--color-accent);
+  opacity: 1;
+  text-decoration: none;
+}
 
 /* white strip behind the full-color header logo, so it never needs recoloring */
 .footer__logo-strip {
@@ -66,6 +73,21 @@ body:not(.has-dark-footer) .site-footer { background: var(--color-alt-background
   box-shadow: 0 8px 20px -8px rgba(0,0,0,0.35);
 }
 .footer__logo { display: block; max-height: 56px; width: auto; margin: 0; }
+
+.footer__profile-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.25rem; padding: 0.7rem 1.15rem;
+  border-radius: var(--radius); background: var(--color-accent); color: #111;
+  font-weight: 600; font-size: 0.9rem; text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.footer__col a.footer__profile-btn { color: var(--color-primary-dark); opacity: 1; }
+.footer__col a.footer__profile-btn:hover,
+.footer__col a.footer__profile-btn:focus-visible {
+  background: #fff; color: var(--color-primary-dark); opacity: 1;
+  transform: translateY(-1px); text-decoration: none;
+}
+.footer__profile-btn svg { width: 18px; height: 18px; }
 
 .footer__brand p { opacity: 0.85; line-height: 1.7; margin-bottom: 1.5rem; max-width: 380px; }
 
@@ -84,9 +106,7 @@ body:not(.has-dark-footer) .footer__social a { background: rgba(20,51,127,0.08);
 .footer__contact-line { display: flex; align-items: flex-start; gap: 0.65rem; }
 .footer__contact-line .icon { color: var(--color-accent); flex-shrink: 0; margin-top: 0.2em; }
 .footer__contact-line a { display: flex; align-items: center; gap: 0.65rem; opacity: 0.9; }
-.footer__contact-line a:hover { opacity: 1; }
-.footer__directions { display: inline-block; margin-top: 0.4rem; color: var(--color-accent); font-weight: 600; font-size: 0.85rem; opacity: 1; }
-.footer__directions:hover { text-decoration: underline; }
+.footer__contact-line a:hover { color: var(--color-accent); opacity: 1; text-decoration: none; }
 
 .footer__bottom {
   position: relative;
@@ -102,8 +122,8 @@ body:not(.has-dark-footer) .footer__social a { background: rgba(20,51,127,0.08);
 }
 body:not(.has-dark-footer) .footer__bottom { border-top-color: var(--color-border); }
 .footer__bottom-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.footer__bottom-links a { opacity: 0.85; }
-.footer__bottom-links a:hover { opacity: 1; text-decoration: underline; }
+.footer__bottom-links a { opacity: 0.85; transition: color 0.2s ease, opacity 0.2s ease; }
+.footer__bottom-links a:hover { color: var(--color-accent); opacity: 1; text-decoration: none; }
 
 /* Small phones: everything stacked and centered reads cleaner than left-aligned */
 @media (max-width: 479.98px) {
@@ -111,6 +131,7 @@ body:not(.has-dark-footer) .footer__bottom { border-top-color: var(--color-borde
   .footer__logo-strip { margin-inline: auto; }
   .footer__brand p { margin-inline: auto; }
   .footer__social { justify-content: center; }
+  .footer__profile-btn { display: flex; justify-content: center; }
 }
 
 @media (min-width: 480px) and (max-width: 639.98px) {

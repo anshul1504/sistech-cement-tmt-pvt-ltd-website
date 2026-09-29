@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load core_extras %}
 
-{% block title %}{{ page.meta_title|default:page.title|default:site.company_name }}{% endblock %}
+{% block title %}{{ page.meta_title|default:page.title|default:"SISTECH Cement & TMT" }}{% endblock %}
 {% block meta_description %}{{ page.meta_description|default:site.tagline }}{% endblock %}
 
 {% block content %}
