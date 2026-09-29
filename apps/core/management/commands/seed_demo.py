@@ -129,7 +129,6 @@ BOARD_MEMBERS = [
     ("Ajay Kumar Ratnakar", "Managing Director"),
     ("Pooja Singh Gaharwar", "Director"),
     ("Aditya Paswan", "Director"),
-    ("B K Namdev", "Director"),
 ]
 
 CORE_VALUES = [
@@ -301,7 +300,7 @@ class Command(BaseCommand):
         if site.address:
             return
         site.legal_name = "SISTECH Cement & TMT Private Limited"
-        site.address = "Ho. No. 186/C, Scheme No. 134, Near Advance Academy, Indore, Madhya Pradesh"
+        site.address = "Apollo Premier, Vijay Nagar, Indore, Madhya Pradesh"
         site.phone_primary = "+918319416402"
         site.whatsapp_number = "918319416402"
         site.email_contact = "sistechcement@gmail.com"
@@ -324,11 +323,6 @@ class Command(BaseCommand):
             if src.exists():
                 with open(src, "rb") as f:
                     getattr(site, field_name).save(save_as, File(f), save=False)
-
-        profile = SEED_ASSETS_DIR / "company_profile.pdf"
-        if profile.exists():
-            with open(profile, "rb") as f:
-                site.company_profile.save("sistech-company-profile.pdf", File(f), save=False)
 
         site.save()
         self.stdout.write("Seeded Site Settings with real company details and logo assets.")
