@@ -308,6 +308,8 @@ class Command(BaseCommand):
         site.gst_number = "23ABICS4693M1ZQ"
         site.cin_number = "U26940MP2022PTC060788"
         site.footer_about = "SISTECH Cement & TMT Pvt. Ltd. — Solid Foundation, Strong Future. An Indian construction materials company delivering quality cement and TMT bars through trusted manufacturing partnerships and a strong distribution network."
+        site.social_instagram = "https://www.instagram.com/sistech_cement/"
+        site.social_facebook = "https://www.facebook.com/p/Sistech-cement-100084318904164/"
         site.copyright_text = "© SISTECH Cement & TMT Pvt. Ltd. All rights reserved."
 
         asset_map = {

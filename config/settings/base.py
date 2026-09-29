@@ -20,6 +20,7 @@ ADMIN_URL_PATH = env("ADMIN_URL_PATH", default="admin/")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 INSTALLED_APPS = [
+    "jazzmin",
     "adminsortable2",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -152,4 +153,42 @@ LOGGING = {
         },
     },
     "root": {"handlers": ["console"], "level": "INFO"},
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "SISTECH Admin",
+    "site_header": "SISTECH",
+    "site_brand": "SISTECH Cement & TMT",
+    "welcome_sign": "Welcome to the SISTECH website admin",
+    "copyright": "SISTECH Cement & TMT Pvt. Ltd.",
+    "site_icon": "favicon.ico",
+    "show_ui_builder": False,
+    "related_modal_active": True,
+    "topmenu_links": [
+        {"name": "View Site", "url": "/", "new_window": True},
+    ],
+    "icons": {
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "core.SiteSettings": "fas fa-cogs",
+        "core.ThemeSettings": "fas fa-palette",
+        "core.Page": "fas fa-file-alt",
+        "core.MenuItem": "fas fa-bars",
+        "core.HeroSlide": "fas fa-images",
+        "enquiries.ContactEnquiry": "fas fa-envelope",
+        "network.DealerApplication": "fas fa-handshake",
+        "careers.JobApplication": "fas fa-user-tie",
+        "media_center.BlogPost": "fas fa-newspaper",
+    },
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar": "navbar-dark",
+    "navbar_fixed": True,
+    "brand_colour": "navbar-primary",
+    "accent": "accent-warning",
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_fixed": True,
+    "sidebar_nav_child_indent": True,
+    "theme": "flatly",
 }
